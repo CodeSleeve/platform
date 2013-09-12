@@ -81,3 +81,15 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+/*
+|--------------------------------------------------------------------------
+| Require The Macros File
+|--------------------------------------------------------------------------
+|
+| Finally we'll load the macros file for the application. This provides a
+| a convenient and central location for storing our HTML helper macros.
+|
+*/
+
+require app_path().'/macros.php';

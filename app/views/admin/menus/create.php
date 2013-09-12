@@ -1,3 +1,3 @@
 <h3>Creating Menu</h3>
 
-<?= View::make('menus._form', ['menu' => $menu, 'action' => action('MenusController@store'), 'method' => 'POST']) ?>
+<?= View::make('admin.menus._form', ['menu' => $menu, 'action' => action('Admin\MenusController@store'), 'method' => 'POST']) ?>

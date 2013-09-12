@@ -15,6 +15,6 @@
 	<div class="actions">
 		<?= Form::submit('Save', ['class' => 'btn primary']) ?>
 
-		or <a href="<?= action('MenusController@index') ?>">Cancel</a>
+		or <a href="<?= action('Admin\MenusController@index') ?>">Cancel</a>
 	</div>
 <?= Form::close() ?>

@@ -1,7 +1,7 @@
-<div><a class="btn success" href="<?=  action('menulinks@new', [$menu->id]) ?>">Create New Menulink</a></div>
+<div><a class="btn success" href="<?=  action('Admin\MenuLinksController@create', [$menu->id]) ?>">Create New Menulink</a></div>
 
-<?php if (count($menulinks) == 0): ?>
-	<p>No menulinks.</p>
+<?php if (count($menuLinks) == 0): ?>
+	<p>This menu has no links.</p>
 <?php else: ?>
 	<table class="table table-striped">
 		<thead>
@@ -15,16 +15,16 @@
 		</thead>
 
 		<tbody>
-			<?php foreach($menulinks as $menulink): ?>
+			<?php foreach($menuLinks as $menuLink): ?>
 				<tr>
-					<td><?= $menulink->page_id ?></td>
-					<td><?= $menulink->page_id ?></td>
-					<td><?= $menulink->title ?></td>
-					<td><?= $menulink->url ?></td>
+					<td><?= $menuLink->page_id ?></td>
+					<td><?= $menuLink->page_id ?></td>
+					<td><?= $menuLink->title ?></td>
+					<td><?= $menuLink->url ?></td>
 					<td>
-						<a href="<?= action('menulinks@show', [$menulink->id]) ?>" class="btn">View</a>
-						<a href="<?= action('menulinks@edit', [$menulink->id]) ?>" class="btn">Edit</a>
-						<?= HTML::deleteLink(action('menulinks@destroy', [$menulink->id])) ?>
+						<a href="<?= action('Admin\MenuLinksController@show', [$menuLink->id]) ?>" class="btn">View</a>
+						<a href="<?= action('Admin\MenuLinksController@edit', [$menuLink->id]) ?>" class="btn">Edit</a>
+						<?= HTML::deleteLink(action('MenuLinksController@destroy', [$menuLink->id])) ?>
 					</td>
 				</tr>
 			<?php endforeach ?>

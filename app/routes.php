@@ -36,12 +36,12 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
     Route::delete('menus/{id}', 'Admin\MenusController@destroy');
 
     // menu links
-    Route::get('menus/{id}/menu-links', 'Admin\MenusController@index');
-    Route::get('menus/{id}/menu-links/create', 'Admin\MenusController@create');
-    Route::post('menus/{id}/menu-links', 'Admin\MenusController@store');
-    Route::get('menu-links/{id}/edit', 'Admin\MenusController@edit');
-    Route::put('menu-links/{id}', 'Admin\MenusController@update');
-    Route::delete('menu-links/{id}', 'Admin\MenusController@destroy');
+    Route::get('menus/{id}/menu-links', 'Admin\MenuLinksController@index');
+    Route::get('menus/{id}/menu-links/create', 'Admin\MenuLinksController@create');
+    Route::post('menus/{id}/menu-links', 'Admin\MenuLinksController@store');
+    Route::get('menu-links/{id}/edit', 'Admin\MenuLinksController@edit');
+    Route::put('menu-links/{id}', 'Admin\MenuLinksController@update');
+    Route::delete('menu-links/{id}', 'Admin\MenuLinksController@destroy');
 
     // pages
     Route::get('pages', 'Admin\PagesController@index');

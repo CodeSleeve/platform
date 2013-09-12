@@ -1,3 +1,3 @@
 <h3>Editing Menulink</h3>
 
-<?= View::make('admin.menulinks._form', ['menulink' => $menulink, 'action' => action('MenuLinksController@update', [$menulink->id]), 'method' => 'PUT']) ?>
+<?= View::make('admin.menulinks._form', ['menuLink' => $menuLink, 'action' => action('Admin\MenuLinksController@update', [$menuLink->id]), 'method' => 'PUT']) ?>

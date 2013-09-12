@@ -5,7 +5,7 @@ use View, Input, Auth, Session, Redirect, Response, App, Validator;
 class MenuLinksController extends \BaseController {
 
 	/**
-	 * index method - View all of the menulinks for a give menu
+	 * index method - View all of the menu links for a give menu
 	 *
 	 * @param  $menuId - The id of the menu the menu links belong to
 	 * @return Laravel\Response
@@ -13,9 +13,9 @@ class MenuLinksController extends \BaseController {
 	public function index($menuId)
 	{	
 		$menu = App::make('Menu')->findOrFail($menuId);
-		$menulinks = $menu->menuLinks()->paginate();
+		$menuLinks = $menu->menuLinks()->paginate();
 
-		$this->layout->nest('content', 'admin.menulinks.index', compact('menulinks', 'menuId', '_id'));
+		$this->layout->nest('content', 'admin.menulinks.index', compact('menu', 'menuLinks'));
 	}
 
 	/**
@@ -26,9 +26,10 @@ class MenuLinksController extends \BaseController {
 	public function create($menuId)
 	{
 		$menu = App::make('Menu')->findOrFail($menuId);
-		$menulink = App::make('Menulink');
+		$menuLink = App::make('Menulink');
+		$menuLink->menu_id = $menuId;
 
-		$this->layout->nest('content', 'admin.menulinks.new', compact('menu', 'menulink'));
+		$this->layout->nest('content', 'admin.menulinks.create', compact('menu', 'menuLink'));
 	}
 
 	/**
@@ -39,12 +40,12 @@ class MenuLinksController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$menulink = App::make('MenuLink')->findOrFail($id);
-		$this->layout->nest('content', 'admin.menulinks.edit', compact('menulink'));
+		$menuLink = App::make('MenuLink')->findOrFail($id);
+		$this->layout->nest('content', 'admin.menulinks.edit', compact('menuLink'));
 	}
 
 	/**
-	 * store method - Create a new menulink.
+	 * store method - Create a new menu link.
 	 *
 	 * @param  $menuId - The id of the menu the menu link will belong to.
 	 * @return Laravel\Response

@@ -1,6 +1,8 @@
-<?php
+<?php namespace Admin;
 
-class PhotosController extends BaseController {    
+use View, Input, Auth, Session, Redirect, Response, App, Validator;
+
+class PhotosController extends \BaseController {    
 
 	/**
 	 * index method

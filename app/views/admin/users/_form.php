@@ -68,8 +68,8 @@
 	</div>
 
 	<div class="actions">
-		<?= Form::submit('Save', array('class' => 'btn primary')); ?>
+		<?= Form::submit('Save', ['class' => 'btn primary']) ?>
 
-		or <a href="<?= action('UsersController@dashboard') ?>">Cancel</a>
+		or <a href="<?= action('Admin\UsersController@dashboard') ?>">Cancel</a>
 	</div>
 <?= Form::close(); ?>

@@ -1,5 +1,5 @@
 <div>
-	<a class="btn success" href="<?= action('PagesController@create') ?>">
+	<a class="btn success" href="<?= action('Admin\PagesController@create') ?>">
 		<i class="icon-plus"></i>
 		Create new Page
 	</a>
@@ -25,16 +25,16 @@
 					<td><?= $page->created_at ?></td>
 					<td><?= $page->updated_at ?></td>
 					<td>
-						<a href="<?= action('PagesController@show', [$page->id]) ?>" class="btn">
+						<a href="<?= action('Admin\PagesController@show', [$page->id]) ?>" class="btn">
 							<i class="icon-search"></i>
 							View
 						</a>
 						
-						<a href="<?= action('PagesController@edit', [$page->id]) ?>" class="btn">
+						<a href="<?= action('Admin\PagesController@edit', [$page->id]) ?>" class="btn">
 							<i class="icon-edit"></i>
 							Edit
 						</a>
-						<?= HTML::deleteLink(action('PagesController@destroy', [$page->id])) ?>
+						<?= HTML::deleteLink(action('Admin\PagesController@destroy', [$page->id])) ?>
 					</td>
 				</tr>
 			<?php endforeach ?>

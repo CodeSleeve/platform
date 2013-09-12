@@ -1,4 +1,4 @@
-<div><a class="btn success" href="<?=  action('UsersController@create') ?>">Create new user</a></div>
+<div><a class="btn success" href="<?=  action('Admin\UsersController@create') ?>">Create new user</a></div>
 
 <?php if(count($users) == 0): ?>
 	<p>No users.</p>
@@ -20,8 +20,8 @@
 					<td><?= $user->first_name; ?></td>
 					<td><?= $user->last_name; ?></td>
 					<td>
-						<a href="<?= action('UsersController@edit', [$user->id]); ?>" class="btn">Edit</a>
-						<?= HTML::deleteLink(action('UsersController@destroy', [$user->id])) ?>
+						<a href="<?= action('Admin\UsersController@edit', [$user->id]); ?>" class="btn">Edit</a>
+						<?= HTML::deleteLink(action('Admin\UsersController@destroy', [$user->id])) ?>
 					</td>
 				</tr>
 			<?php endforeach; ?>

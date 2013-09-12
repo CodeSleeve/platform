@@ -25,43 +25,43 @@ Route::group(['before' => 'guest'], function()
 });
 
 // Authenticastion required routes - Can only be accessed by authenticated users.
-Route::group(['before' => 'auth'], function() 
+Route::group(['prefix' => 'admin', 'before' => 'auth'], function() 
 {
     // menus
-    Route::get('admin/menus', 'MenusController@index');
-    Route::get('admin/menus/create', 'MenusController@create');
-    Route::post('admin/menus', 'MenusController@store');
-    Route::get('admin/menus/{id}/edit', 'MenusController@edit');
-    Route::put('admin/menus/{id}', 'MenusController@update');
-    Route::delete('admin/menus/{id}', 'MenusController@destroy');
+    Route::get('menus', 'Admin\MenusController@index');
+    Route::get('menus/create', 'Admin\MenusController@create');
+    Route::post('menus', 'Admin\MenusController@store');
+    Route::get('menus/{id}/edit', 'Admin\MenusController@edit');
+    Route::put('menus/{id}', 'Admin\MenusController@update');
+    Route::delete('menus/{id}', 'Admin\MenusController@destroy');
 
-    // menu_links
-    Route::get('admin/menus/{id}/menu-links', 'MenusController@index');
-    Route::get('admin/menus/{id}/menu-links/create', 'MenusController@create');
-    Route::post('admin/menus/{id}/menu-links', 'MenusController@store');
-    Route::get('admin/menu-links/{id}/edit', 'MenusController@edit');
-    Route::put('admin/menu-links/{id}', 'MenusController@update');
-    Route::delete('admin/menu-links/{id}', 'MenusController@destroy');
+    // menu links
+    Route::get('menus/{id}/menu-links', 'Admin\MenusController@index');
+    Route::get('menus/{id}/menu-links/create', 'Admin\MenusController@create');
+    Route::post('menus/{id}/menu-links', 'Admin\MenusController@store');
+    Route::get('menu-links/{id}/edit', 'Admin\MenusController@edit');
+    Route::put('menu-links/{id}', 'Admin\MenusController@update');
+    Route::delete('menu-links/{id}', 'Admin\MenusController@destroy');
 
     // pages
-    Route::get('admin/pages', 'PagesController@index');
-    Route::get('admin/pages/create', 'PagesController@create');
-    Route::post('admin/pages', 'PagesController@store');
-    Route::get('admin/pages/{id}/edit', 'PagesController@edit');
-    Route::put('admin/pages/{id}', 'PagesController@update');
-    Route::delete('admin/pages/{id}', 'PagesController@destroy');
+    Route::get('pages', 'Admin\PagesController@index');
+    Route::get('pages/create', 'Admin\PagesController@create');
+    Route::post('pages', 'Admin\PagesController@store');
+    Route::get('pages/{id}/edit', 'Admin\PagesController@edit');
+    Route::put('pages/{id}', 'Admin\PagesController@update');
+    Route::delete('pages/{id}', 'Admin\PagesController@destroy');
 
     // photos
-    Route::get('admin/photos', 'PhotosController@index');
-    Route::post('admin/photos', 'PhotosController@store');
+    Route::get('photos', 'Admin\PhotosController@index');
+    Route::post('photos', 'Admin\PhotosController@store');
 
     // users
-    Route::get('admin/users', 'UsersController@index');
-    Route::get('users/create', 'UsersController@create');
-    Route::post('admin/users', 'UsersController@store');
-    Route::get('users/{id}/edit', 'UsersController@edit');
-    Route::put('users/{id}', ['uses' => 'UsersController@update', 'before' => ['csrf', 'auth']]);
-    Route::delete('users/{id}', ['uses' => 'UsersController@destroy', 'before' => ['csrf', 'auth']]);
-    Route::get('logout', 'UsersController@logout');
-    Route::get('admin', 'UsersController@dashboard');
+    Route::get('users', 'Admin\UsersController@index');
+    Route::get('users/create', 'Admin\UsersController@create');
+    Route::post('users', 'Admin\UsersController@store');
+    Route::get('users/{id}/edit', 'Admin\UsersController@edit');
+    Route::put('users/{id}', ['uses' => 'Admin\UsersController@update', 'before' => ['csrf', 'auth']]);
+    Route::delete('users/{id}', ['uses' => 'Admin\UsersController@destroy', 'before' => ['csrf', 'auth']]);
+    Route::get('logout', 'Admin\UsersController@logout');
+    Route::get('/', 'Admin\UsersController@dashboard');
 });

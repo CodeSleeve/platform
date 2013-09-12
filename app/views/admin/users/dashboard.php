@@ -7,7 +7,7 @@
 		Hi <strong><?= Auth::user()->username ?></strong>, welcome back.
 	</p>
 	
-	<a class="btn btn-large btn-warning" href="<?= action('UsersController@edit', [Auth::user()->id]) ?>">
+	<a class="btn btn-large btn-warning" href="<?= action('Admin\UsersController@edit', [Auth::user()->id]) ?>">
 		<i class="icon-user"></i>
 		View My Account
 	</a>

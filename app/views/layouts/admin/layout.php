@@ -22,11 +22,11 @@
 	<body>
 		<div class="navbar navbar-static-top navbar-inverse">
 			<div class="navbar-inner">
-				<a class="brand" href="<?= action('UsersController@dashboard') ?>">Code Sleeve</a>
+				<a class="brand" href="<?= action('Admin\UsersController@dashboard') ?>">Code Sleeve</a>
 					
 				<ul class="nav">
 					<li>
-						<a href="<?= action('UsersController@dashboard') ?>">
+						<a href="<?= action('Admin\UsersController@dashboard') ?>">
 							<i class="icon-dashboard"></i>
 							Dashboard
 						</a>
@@ -50,13 +50,13 @@
 						
 						<ul class="dropdown-menu">
 							<li>
-								<a href="<?= action('UsersController@edit', array(Auth::user()->id)) ?>">My Account</a>
+								<a href="<?= action('Admin\UsersController@edit', array(Auth::user()->id)) ?>">My Account</a>
 							</li>
 							
 							<li class="divider"></li>
 								
 							<li>
-								<a href="<?= action('UsersController@logout') ?>">Log Out</a>
+								<a href="<?= action('Admin\UsersController@logout') ?>">Log Out</a>
 							</li>
 						</ul>
 					</div>
@@ -70,7 +70,7 @@
 					<ul class="nav nav-stacked">
 						<?php if (Authority::can('update', 'Page')): ?>
 							<li>
-								<a href="<?= action('PagesController@index') ?>">
+								<a href="<?= action('Admin\PagesController@index') ?>">
 									<i class="icon-file"></i>
 									Pages
 								</a>
@@ -78,7 +78,7 @@
 						<?php endif ?>
 						
 						<li>
-							<a href="<?= action('MenusController@index') ?>">
+							<a href="<?= action('Admin\MenusController@index') ?>">
 								<i class="icon-link"></i>
 								Menus
 							</a>
@@ -86,7 +86,7 @@
 						
 						<?php if (Authority::can('update', 'User')): ?>
 							<li>
-								<a href="<?= action('UsersController@index') ?>">
+								<a href="<?= action('Admin\UsersController@index') ?>">
 									<i class="icon-group"></i>
 									Users
 								</a>
@@ -119,7 +119,7 @@
 			
 			<div class="row-fluid">
 				<div class="footer">
-					<p>&copy; Code Sleeve Platform 2013</p>
+					<p>&copy; Code Sleeve Platform <?= date('Y') ?></p>
 				</div>
 			</div>
 		</div>

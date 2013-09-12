@@ -27,8 +27,8 @@
 <ul class="thumbnails">
 	<?php foreach($photos as $photo): ?>
 		<li class="span2">
-			<a class="thumbnail" href="<?= $photo->photo_url() ?>">
-				<img src="<?= $photo->photo_url('thumbnail') ?>" title="Click To Enlarge" />
+			<a class="thumbnail" href="<?= $photo->photo->url() ?>">
+				<img src="<?= $photo->photo->url('thumbnail') ?>" title="Click To Enlarge" />
 				<span><?= $photo->photo_file_name ?></span>
 			</a>
 		</li>

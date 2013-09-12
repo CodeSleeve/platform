@@ -1,6 +1,8 @@
-<?php
+<?php namespace Admin;
 
-class MenuLinksController extends BaseController {
+use View, Input, Auth, Session, Redirect, Response, App, Validator;
+
+class MenuLinksController extends \BaseController {
 
 	/**
 	 * index method - View all of the menulinks for a give menu
@@ -13,7 +15,7 @@ class MenuLinksController extends BaseController {
 		$menu = App::make('Menu')->findOrFail($menuId);
 		$menulinks = $menu->menuLinks()->paginate();
 
-		$this->layout->nest('content', 'menulinks.index', compact('menulinks', 'menuId', '_id'));
+		$this->layout->nest('content', 'admin.menulinks.index', compact('menulinks', 'menuId', '_id'));
 	}
 
 	/**
@@ -26,7 +28,7 @@ class MenuLinksController extends BaseController {
 		$menu = App::make('Menu')->findOrFail($menuId);
 		$menulink = App::make('Menulink');
 
-		$this->layout->nest('content', 'menulinks.new', compact('menu', 'menulink'));
+		$this->layout->nest('content', 'admin.menulinks.new', compact('menu', 'menulink'));
 	}
 
 	/**
@@ -38,7 +40,7 @@ class MenuLinksController extends BaseController {
 	public function edit($id)
 	{
 		$menulink = App::make('MenuLink')->findOrFail($id);
-		$this->layout->nest('content', 'menulinks.edit', compact('menulink'));
+		$this->layout->nest('content', 'admin.menulinks.edit', compact('menulink'));
 	}
 
 	/**

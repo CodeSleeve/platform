@@ -1,6 +1,8 @@
-<?php
+<?php namespace Admin;
 
-class MenusController extends BaseController {
+use View, Input, Auth, Session, Redirect, Response, App, Validator;
+
+class MenusController extends \BaseController {
 
 	/**
 	 * View all of the menus.
@@ -12,7 +14,7 @@ class MenusController extends BaseController {
 		$menus = App::make('Menu');
 		$menus = $menus->paginate();
 
-		$this->layout->nest('content', 'menus.index', compact('menus'));
+		$this->layout->nest('content', 'admin.menus.index', compact('menus'));
 	}
 
 	/**
@@ -24,7 +26,7 @@ class MenusController extends BaseController {
 	{
 		$menu = App::make('Menu');
 
-		$this->layout->nest('content', 'menus.create', compact('menu'));
+		$this->layout->nest('content', 'admin.menus.create', compact('menu'));
 	}
 
 	/**
@@ -37,7 +39,7 @@ class MenusController extends BaseController {
 	{
 		$menu = App::make('Menu')->findOrFail($id);
 
-		$this->layout->nest('content', 'menus.edit', compact('menu'));
+		$this->layout->nest('content', 'admin.menus.edit', compact('menu'));
 	}
 
 	/**
@@ -57,11 +59,11 @@ class MenusController extends BaseController {
 
 			Session::flash('message', 'Added menu #'.$menu->id);
 
-			return Redirect::action('MenusController@edit', [$menu->id]);
+			return Redirect::action('Admin\MenusController@edit', [$menu->id]);
 		}
 		else
 		{
-			return Redirect::action('MenusController@new', [])
+			return Redirect::action('Admin\MenusController@new', [])
 				->withErrors($validation->errors)
 				->withInput();
 		}
@@ -84,11 +86,11 @@ class MenusController extends BaseController {
 			$menu->save();
 			Session::flash('message', 'Updated menu #'.$menu->id);
 
-			return Redirect::action('MenusController@edit', [$menu->id]);
+			return Redirect::action('Admin\MenusController@edit', [$menu->id]);
 		}
 		else
 		{
-			return Redirect::action('MenusController@edit', [$menu->id])
+			return Redirect::action('Admin\MenusController@edit', [$menu->id])
 					->withErrors($validation->errors)
 					->withInput();
 		}
@@ -106,6 +108,6 @@ class MenusController extends BaseController {
 		$menu->delete();
 		Session::flash('message', 'Deleted menu #'.$menu->id);
 
-		return Redirect::action('MenusController@index', []);
+		return Redirect::action('Admin\MenusController@index', []);
 	}
 }

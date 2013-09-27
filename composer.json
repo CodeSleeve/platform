@@ -1,12 +1,23 @@
 {
-	"name": "laravel/laravel",
-	"description": "The Laravel Framework.",
-	"keywords": ["framework", "laravel"],
+    "name": "codesleeve/platform",
+    "description": "The core platform package for codesleeve",
+    "authors": [
+        {
+            "name": "Kelt Dockins",
+            "email": "kelt@codesleeve.com"
+        },
+        {
+            "name": "Travis Bennett",
+            "email": "travis@codesleeve.com"
+        }
+    ],
+	"keywords": ["framework", "laravel", "codesleeve", "platform"],
 	"require": {
 		"laravel/framework": "4.0.*",
 		"machuga/authority-l4" : "dev-master",
 		"way/generators": "dev-master",
 		"codesleeve/stapler": "dev-master",
+		"codesleeve/asset-pipeline": "dev-master",
 		"loic-sharma/profiler": "1.1.*"
 	},
 	"autoload": {

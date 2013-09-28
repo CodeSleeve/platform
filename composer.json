@@ -44,7 +44,7 @@
 			"php artisan key:generate",
             "php artisan assets:generate",
             "php artisan config:publish codesleeve/asset-pipeline",
-            "php artisan platform:setup"
+            "php artisan platform:setup",
             "php artisan migrate --seed"
 		]
 	},

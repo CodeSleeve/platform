@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Laravel PHP Framework</title>
+
+    <?= stylesheet_link_tag() ?>
+    <?= javascript_include_tag() ?>
+
     <style>
         @import url(//fonts.googleapis.com/css?family=Lato:300,400,700);
 

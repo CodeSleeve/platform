@@ -116,8 +116,8 @@ return array(
 		'Authority\AuthorityL4\AuthorityL4ServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
 		'Codesleeve\Stapler\StaplerServiceProvider',
+		'Codesleeve\AssetPipeline\AssetPipelineServiceProvider',
 		'Profiler\ProfilerServiceProvider',
-
 	),
 
 	/*

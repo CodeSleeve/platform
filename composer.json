@@ -42,10 +42,13 @@
 		],
 		"post-create-project-cmd": [
 			"php artisan key:generate"
+            "php artisan assets:generate"
+            "php artisan config:publish codesleeve/asset-pipeline"
 		]
 	},
 	"config": {
 		"preferred-install": "dist"
 	},
-	"minimum-stability": "dev"
+	"minimum-stability": "dev-master",
+    "license": "MIT"
 }

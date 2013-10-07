@@ -17,7 +17,7 @@ class CreatePhotosTable extends migration{
 			$table->string('photo_file_name');
 		    $table->integer('photo_file_size');
 		    $table->string('photo_content_type');
-		    $table->date('photo_uploaded_at');
+		    $table->date('photo_updated_at');
 		    $table->timestamps();
 		});
 		

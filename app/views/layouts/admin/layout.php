@@ -1,44 +1,22 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title><?= isset($title) ? $title : 'Codesleeve Toolkit' ?></title>
+		<title><?= isset($title) ? $title : 'Codesleeve Platform' ?></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 		<link rel="stylesheet" type="text/css" href="<?= asset('vendors/bootstrap/css/bootstrap-cerulean.min.css') ?>">
 		<link rel="stylesheet" type="text/css" href="<?= asset('vendors/bootstrap/css/bootstrap-responsive.min.css') ?>">
 		<link rel="stylesheet" type="text/css" href="<?= asset('vendors/font-awesome/css/font-awesome.min.css') ?>">
-		<link rel="stylesheet" type="text/css" href="<?= asset('vendors/aloha/css/aloha.css') ?>">
-		
-		<script src="<?= asset('vendors/jquery/jquery-1.9.0.min.js') ?>"></script>
-		<script src="<?= asset('vendors/ckeditor/ckeditor.js') ?>"></script>
- 		<script src="<?= asset('vendors/jeditable/jeditable.min.js') ?>"></script>
- 		<script src="<?= asset('vendors/bootstrap/js/bootstrap.min.js') ?>"></script>
-		<script src="<?= asset('vendors/bootbox/bootbox.min.js') ?>"></script>
-		<script src="<?= asset('js/app/bindings/data-editable.js') ?>"></script>
-		<script src="<?= asset('js/app/bindings/data-removable.js') ?>"></script>
-		<script src="<?= asset('js/app.js') ?>"></script>
 	</head>
 	
 	<body>
 		<div class="navbar navbar-static-top navbar-inverse">
 			<div class="navbar-inner">
-				<a class="brand" href="<?= action('Admin\UsersController@dashboard') ?>">Code Sleeve</a>
-					
-				<ul class="nav">
-					<li>
-						<a href="<?= action('Admin\UsersController@dashboard') ?>">
-							<i class="icon-dashboard"></i>
-							Dashboard
-						</a>
-					</li>
-					
-					<li>
-						<a href="<?= action('HomeController@index') ?>" target="_blank">
-							<i class="icon-home"></i>
-							View Site
-						</a>
-					</li>
-				</ul>
+				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
 				
 				<?php if (Auth::user()): ?>
 					<div class="btn-group pull-right">
@@ -61,6 +39,26 @@
 						</ul>
 					</div>
 				<?php endif ?>
+				
+				<div class="nav-collapse">
+					<a class="brand" href="<?= action('Admin\UsersController@dashboard') ?>">Code Sleeve</a>
+					
+					<ul class="nav">
+						<li>
+							<a href="<?= action('Admin\UsersController@dashboard') ?>">
+								<i class="icon-dashboard"></i>
+								Dashboard
+							</a>
+						</li>
+						
+						<li>
+							<a href="<?= action('HomeController@index') ?>" target="_blank">
+								<i class="icon-home"></i>
+								View Site
+							</a>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div><br>
 		
@@ -123,5 +121,14 @@
 				</div>
 			</div>
 		</div>
+		
+		<script src="<?= asset('vendors/jquery/jquery-1.9.0.min.js') ?>"></script>
+		<script src="<?= asset('vendors/ckeditor/ckeditor.js') ?>"></script>
+ 		<script src="<?= asset('vendors/jeditable/jeditable.min.js') ?>"></script>
+ 		<script src="<?= asset('vendors/bootstrap/js/bootstrap.min.js') ?>"></script>
+		<script src="<?= asset('vendors/bootbox/bootbox.min.js') ?>"></script>
+		<script src="<?= asset('js/app/bindings/data-editable.js') ?>"></script>
+		<script src="<?= asset('js/app/bindings/data-removable.js') ?>"></script>
+		<script src="<?= asset('js/app.js') ?>"></script>
 	</body>
 </html>

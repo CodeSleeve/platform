@@ -30,7 +30,7 @@ class PhotosController extends \BaseController {
         {
             //Send back the URL of an uploaded file to ckeditor
             $funcNum = Input::query('CKEditorFuncNum');
-            $url = $photo->photo_url();
+            $url = $photo->photo->url();
             $message = 'Upload successful!';
 
             return Response::make("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($funcNum, '$url');</script>", 201);

@@ -25,7 +25,7 @@
 					<td><?= $page->created_at ?></td>
 					<td><?= $page->updated_at ?></td>
 					<td>
-						<a href="<?= action('Admin\PagesController@show', [$page->id]) ?>" class="btn">
+						<a href="<?= action('PagesController@show', [$page->id]) ?>" class="btn" target="_blank">
 							<i class="icon-search"></i>
 							View
 						</a>

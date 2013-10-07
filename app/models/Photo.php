@@ -2,7 +2,7 @@
 
 class Photo extends Eloquent 
 {
-	use Codesleeve\Stapler\StaplerTrait;
+	use Codesleeve\Stapler\Stapler;
 
     /**
 	 * __construct method

@@ -8,8 +8,17 @@ class RolesTableSeeder extends Seeder {
     	DB::table('roles')->delete();
 
         // Uncomment the below to run the seeder
-        DB::table('roles')->insert(['name' => 'admin']);
-        DB::table('roles')->insert(['name' => 'user']);
+        DB::table('roles')->insert([
+        	'name' => 'admin', 
+        	'created_at' => date("Y-m-d H:i:s"), 
+        	'updated_at' => date("Y-m-d H:i:s")
+        ]);
+
+        DB::table('roles')->insert([
+        	'name' => 'user',
+        	'created_at' => date("Y-m-d H:i:s"), 
+        	'updated_at' => date("Y-m-d H:i:s")
+        ]);
     }
 
 }

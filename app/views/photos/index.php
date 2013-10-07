@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="<?= asset('vendors/bootstrap/css/bootstrap-cerulean.min.css') ?>"></link>
 <link rel="stylesheet" href="<?= asset('vendors/bootstrap/css/bootstrap-responsive.min.css') ?>"></link>
 
-
 <script type="text/javascript" src="<?= asset('vendors/jquery/jquery-1.9.0.min.js') ?>"></script>
 <script type="text/javascript">	  
 	$(document).ready(function() {

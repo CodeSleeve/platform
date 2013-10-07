@@ -117,7 +117,7 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 		'Codesleeve\Stapler\StaplerServiceProvider',
 		'Codesleeve\AssetPipeline\AssetPipelineServiceProvider',
-		'Profiler\ProfilerServiceProvider',
+		//'Profiler\ProfilerServiceProvider',
 	),
 
 	/*

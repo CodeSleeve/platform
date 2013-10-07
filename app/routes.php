@@ -24,7 +24,7 @@ Route::group(['before' => 'guest'], function()
     Route::post('login', ['uses' => 'UsersController@postLogin', 'before' => 'csrf']);
 });
 
-// Authenticastion required routes - Can only be accessed by authenticated users.
+// Authentication required routes - Can only be accessed by authenticated users.
 Route::group(['prefix' => 'admin', 'before' => 'auth'], function() 
 {
     // menus

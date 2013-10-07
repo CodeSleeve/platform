@@ -14,8 +14,8 @@ class UsersTableSeeder extends Seeder {
                 'password' => Hash::make('password'),
                 'first_name' => '',
                 'last_name' => '',
-                'created_at' => date(DATE_ATOM),
-                'updated_at' => date(DATE_ATOM)
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
             ]
         );
 

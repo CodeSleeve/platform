@@ -84,6 +84,32 @@ require app_path().'/filters.php';
 
 /*
 |--------------------------------------------------------------------------
+| Require The Composers File
+|--------------------------------------------------------------------------
+|
+| For this application all view composers are defined as classes in app/composers 
+| and initialized via in app/composers.php.  The app/composers directly has already 
+| been registered with the auoloader in the compoers.json file, so all we need to 
+| do here is include the app/composers.php file
+|
+*/
+
+require app_path().'/composers.php';
+
+/*
+|--------------------------------------------------------------------------
+| Require The Bindings File
+|--------------------------------------------------------------------------
+|
+| The bindings.php file provides a central localtion to register common bindings 
+| used throughout this application.
+|
+*/
+
+require app_path().'/bindings.php';
+
+/*
+|--------------------------------------------------------------------------
 | Require The Macros File
 |--------------------------------------------------------------------------
 |

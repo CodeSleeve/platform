@@ -63,5 +63,5 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
     Route::put('users/{id}', ['uses' => 'Admin\UsersController@update', 'before' => ['csrf', 'auth']]);
     Route::delete('users/{id}', ['uses' => 'Admin\UsersController@destroy', 'before' => ['csrf', 'auth']]);
     Route::get('logout', 'Admin\UsersController@logout');
-    Route::get('/', 'Admin\UsersController@dashboard');
+    Route::get('/', 'Admin\PagesController@dashboard');
 });

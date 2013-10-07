@@ -13,7 +13,7 @@
 	</div>
 
 	<div class="actions">
-		<?= Form::submit('Save', ['class' => 'btn primary']) ?>
+		<?= Form::submit('Save', ['class' => 'btn btn-primary']) ?>
 
 		or <a href="<?= action('Admin\MenusController@index') ?>">Cancel</a>
 	</div>

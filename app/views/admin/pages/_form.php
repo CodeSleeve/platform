@@ -40,6 +40,6 @@
 	<div class="actions">
 		<?= Form::submit('Save', array('class' => 'btn btn-primary')); ?>
 
-		or <a href="<?= action('Admin\PagesController@index', []); ?>">Cancel</a>
+		or <a href="<?= action('Admin\PagesController@index') ?>">Cancel</a>
 	</div>
 <?= Form::close(); ?>

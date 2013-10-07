@@ -1,7 +1,15 @@
+<ul class="breadcrumb">
+	<li>
+		<a href="<?= action('Admin\PagesController@dashboard') ?>">Dashboard</a> <span class="divider">/</span>
+	</li>
+	
+	<li class="active">Pages</li>
+</ul>
+
 <div>
-	<a class="btn success" href="<?= action('Admin\PagesController@create') ?>">
+	<a class="btn btn-primary" href="<?= action('Admin\PagesController@create') ?>">
 		<i class="icon-plus"></i>
-		Create new Page
+		Create New Page
 	</a>
 </div><hr>
 

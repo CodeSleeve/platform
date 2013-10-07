@@ -58,16 +58,16 @@ class MenuLinksController extends \BaseController {
 		
 		$validation = Validator::make(Input::all(), $menuLink->rules);
 		if ($validation->fails()) {
-			return Redirect::action('MenuLinksController@new', [$menuId], 400)->withErrors($validation)->withInput();
+			return Redirect::action('MenuLinksController@new', [$menuId])->withErrors($validation)->withInput();
 		}
 
 		if ($menu->menuLinks()->insert($menuLink))
 		{
 			Session::flash('success', 'Menu link successfully created');
-			return Redirect::action('MenuLinksController@edit', [$menuLink->id], 201);
+			return Redirect::action('MenuLinksController@edit', [$menuLink->id]);
 		}
 		
-		return Redirect::action('MenuLinksController@new', [$menuId], 422)->withInput();
+		return Redirect::action('MenuLinksController@new', [$menuId])->withInput();
 	}
 
 	/**
@@ -81,24 +81,24 @@ class MenuLinksController extends \BaseController {
 		$menuLink = App::make('MenuLink')->findOrFail($id);
 		$validation = Validator::make(Input::all(), $menuLink->rules);
 		if ($validation->fails()) {
-			return Redirect::action('MenuLinksController@edit', [$id], 400)->withErrors($validation)->withInput();
+			return Redirect::action('MenuLinksController@edit', [$id])->withErrors($validation)->withInput();
 		}
 
 		$menuLink->fill(Input::all());
 		if ($menuLink->save()) 
 		{
 			Session::flash('success', 'Menu link successfully updated');
-			return Redirect::action('MenuLinksController@edit', [$id], 200);
+			return Redirect::action('MenuLinksController@edit', [$id]);
 		}
 
 		Session::flash('success', 'Menu link update unsuccessful, please try again.');
-		return Redirect::action('MenuLinksController@edit', [$id], 422);
+		return Redirect::action('MenuLinksController@edit', [$id]);
 	}
 
 	/**
 	 * destroy method - Delete a specific menulink.
 	 *
-	 * @param  int       $id
+	 * @param  int  $id
 	 * @return Response
 	 */
 	public function destroy($id)

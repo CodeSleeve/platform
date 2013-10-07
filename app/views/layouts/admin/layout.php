@@ -7,6 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="<?= asset('vendors/bootstrap/css/bootstrap-cerulean.min.css') ?>">
 		<link rel="stylesheet" type="text/css" href="<?= asset('vendors/bootstrap/css/bootstrap-responsive.min.css') ?>">
 		<link rel="stylesheet" type="text/css" href="<?= asset('vendors/font-awesome/css/font-awesome.min.css') ?>">
+		<link rel="stylesheet" type="text/css" href="<?= asset('css/admin.css') ?>">
 	</head>
 	
 	<body>
@@ -18,17 +19,17 @@
                     <span class="icon-bar"></span>
                 </button>
 				
-				<?php if (Auth::user()): ?>
+				<?php if ($currentUser): ?>
 					<div class="btn-group pull-right">
 						<a href="#" data-toggle="dropdown" class="btn dropdown-toggle">
 							<i class="icon-user"></i>
-							<?= Auth::user()->email ?>
+							<?= $currentUser->email ?>
 							<span class="caret"></span>
 						</a>
 						
 						<ul class="dropdown-menu">
 							<li>
-								<a href="<?= action('Admin\UsersController@edit', array(Auth::user()->id)) ?>">My Account</a>
+								<a href="<?= action('Admin\UsersController@edit', [$currentUser->id]) ?>">My Account</a>
 							</li>
 							
 							<li class="divider"></li>
@@ -41,11 +42,11 @@
 				<?php endif ?>
 				
 				<div class="nav-collapse">
-					<a class="brand" href="<?= action('Admin\UsersController@dashboard') ?>">Code Sleeve</a>
+					<a class="brand" href="<?= action('Admin\PagesController@dashboard') ?>">Code Sleeve - Platform</a>
 					
 					<ul class="nav">
 						<li>
-							<a href="<?= action('Admin\UsersController@dashboard') ?>">
+							<a href="<?= action('Admin\PagesController@dashboard') ?>">
 								<i class="icon-dashboard"></i>
 								Dashboard
 							</a>
@@ -65,39 +66,14 @@
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div class="span2">
-					<ul class="nav nav-stacked">
-						<?php if (Authority::can('update', 'Page')): ?>
-							<li>
-								<a href="<?= action('Admin\PagesController@index') ?>">
-									<i class="icon-file"></i>
-									Pages
-								</a>
-							</li>
-						<?php endif ?>
-						
-						<li>
-							<a href="<?= action('Admin\MenusController@index') ?>">
-								<i class="icon-link"></i>
-								Menus
-							</a>
-						</li>
-						
-						<?php if (Authority::can('update', 'User')): ?>
-							<li>
-								<a href="<?= action('Admin\UsersController@index') ?>">
-									<i class="icon-group"></i>
-									Users
-								</a>
-							</li>
-						<?php endif ?>
-					</ul>
+					<?=  View::make('admin.shared._leftNav') ?>
 				</div>
 				<div class="span10">
 					<?php if (Session::has('error')): ?>
 						<div class="container">
 							<div class="alert alert-error">
 								<button type="button" class="close" data-dismiss="alert">×</button>
-								<?= Session::get('error'); ?>
+								<?= Session::get('error') ?>
 							</div>
 						</div>
 					<?php endif ?>
@@ -106,7 +82,7 @@
 						<div class="container">
 							<div class="alert alert-success">
 								<button type="button" class="close" data-dismiss="alert">×</button>
-								<?= Session::get('success'); ?>
+								<?= Session::get('success') ?>
 							</div>
 						</div>
 					<?php endif ?>

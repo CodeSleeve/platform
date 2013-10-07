@@ -7,7 +7,7 @@ class Menu extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['title','url', ];
+	protected $fillable = ['title', 'url'];
 
 	/**
 	 * The rules array lets us know how to to validate this model

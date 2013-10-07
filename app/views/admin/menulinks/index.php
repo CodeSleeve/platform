@@ -1,4 +1,17 @@
-<div><a class="btn success" href="<?=  action('Admin\MenuLinksController@create', [$menu->id]) ?>">Create New Menulink</a></div>
+<ul class="breadcrumb">
+	<li>
+		<a href="<?= action('Admin\PagesController@dashboard') ?>">Dashboard</a> <span class="divider">/</span>
+	</li>
+	
+	<li class="active">Menu Links</li>
+</ul>
+
+<div>
+	<a class="btn btn-primary" href="<?=  action('Admin\MenuLinksController@create', [$menu->id]) ?>">
+		<i class="icon-plus"></i>
+		Create New Menulink
+	</a>
+</div><hr>
 
 <?php if (count($menuLinks) == 0): ?>
 	<p>This menu has no links.</p>
@@ -22,8 +35,11 @@
 					<td><?= $menuLink->title ?></td>
 					<td><?= $menuLink->url ?></td>
 					<td>
-						<a href="<?= action('Admin\MenuLinksController@show', [$menuLink->id]) ?>" class="btn">View</a>
-						<a href="<?= action('Admin\MenuLinksController@edit', [$menuLink->id]) ?>" class="btn">Edit</a>
+						<a href="<?= action('Admin\MenuLinksController@edit', [$menuLink->id]) ?>" class="btn">
+							<i class="icon-edit"></i>
+							Edit
+						</a>
+						
 						<?= HTML::deleteLink(action('MenuLinksController@destroy', [$menuLink->id])) ?>
 					</td>
 				</tr>

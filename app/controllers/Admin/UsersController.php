@@ -101,16 +101,4 @@ class UsersController extends \BaseController {
         return Redirect::action('HomeController@index');
 	}
 
-	/**
-	 * get_dashboard method
-	 *
-	 * Display the user dashboard page.
-	 * 
-	 * @return Laravel\View
-	 */
-	public function dashboard()
-	{
-		$this->layout->nest('content', 'admin.users.dashboard');
-	}
-
 }

@@ -108,4 +108,14 @@ class PagesController extends \BaseController {
 		Session::flash('failure', 'Unable to delele page #' . $page->id . ', please try again.');
 		return Redirect::action('Admin\PagesController@edit', [$page->id]);
 	}
+
+	/**
+	 * Display the admin dashboard page.
+	 * 
+	 * @return Laravel\View
+	 */
+	public function dashboard()
+	{
+		$this->layout->nest('content', 'admin.pages.dashboard');
+	}
 }

@@ -1,4 +1,8 @@
 <ul class="nav nav-pills nav-stacked">
+	<li class="nav-header">
+		Actions
+	</li><hr>
+		
 	<?php if (Authority::can('update', 'Page')): ?>
 		<li <?= $currentController == 'Admin\PagesController' ? 'class="active"' : null ?>>
 			<a href="<?= action('Admin\PagesController@index') ?>">

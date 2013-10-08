@@ -1,6 +1,6 @@
 <ul class="breadcrumb">
 	<li>
-		<a href="<?= action('Admin\PagesController@dashboard') ?>">Dashboard</a> <span class="divider">/</span>
+		<a href="<?= action('Admin\PHomeController@dashboard') ?>">Dashboard</a> <span class="divider">/</span>
 	</li>
 	
 	<li class="active">Menu Links</li>

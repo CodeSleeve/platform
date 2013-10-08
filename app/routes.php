@@ -27,6 +27,9 @@ Route::group(['before' => 'guest'], function()
 // Authentication required routes - Can only be accessed by authenticated users.
 Route::group(['prefix' => 'admin', 'before' => 'auth'], function() 
 {
+    // home
+    Route::get('/', 'Admin\HomeController@dashboard');
+
     // menus
     Route::get('menus', 'Admin\MenusController@index');
     Route::get('menus/create', 'Admin\MenusController@create');
@@ -63,5 +66,4 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
     Route::put('users/{id}', ['uses' => 'Admin\UsersController@update', 'before' => ['csrf', 'auth']]);
     Route::delete('users/{id}', ['uses' => 'Admin\UsersController@destroy', 'before' => ['csrf', 'auth']]);
     Route::get('logout', 'Admin\UsersController@logout');
-    Route::get('/', 'Admin\PagesController@dashboard');
 });

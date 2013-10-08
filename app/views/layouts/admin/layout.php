@@ -42,11 +42,11 @@
 				<?php endif ?>
 				
 				<div class="nav-collapse">
-					<a class="brand" href="<?= action('Admin\PagesController@dashboard') ?>">Code Sleeve - Platform</a>
+					<a class="brand" href="<?= action('Admin\HomeController@dashboard') ?>">Code Sleeve - Platform</a>
 					
 					<ul class="nav">
 						<li>
-							<a href="<?= action('Admin\PagesController@dashboard') ?>">
+							<a href="<?= action('Admin\HomeController@dashboard') ?>">
 								<i class="icon-dashboard"></i>
 								Dashboard
 							</a>

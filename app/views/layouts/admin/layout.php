@@ -45,7 +45,7 @@
 					<a class="brand" href="<?= action('Admin\HomeController@dashboard') ?>">Code Sleeve - Platform</a>
 					
 					<ul class="nav">
-						<li>
+						<li <?= Route::currentRouteAction() == 'Admin\HomeController@dashboard' ? 'class="active"' : null ?>>
 							<a href="<?= action('Admin\HomeController@dashboard') ?>">
 								<i class="icon-dashboard"></i>
 								Dashboard

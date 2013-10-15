@@ -13,23 +13,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected $table = 'users';
 
 	/**
-	 * The model's validation rules.
-	 * 
-	 * @var array
-	 */
-    public static $rules = [
-    	'first_name' 		=> 'required|max:256',
-    	'last_name' 		=> 'required|max:256',
-    	'email' 			=> 'required|email',
-    	'confirm_password' 	=> 'required_with:password|same:password'
-    ];
-
-	/**
 	 * Attributes that can be mass assigned on this model.
 	 * 
 	 * @var array
 	 */
-	protected $fillable = ['first_name', 'last_name', 'email', 'password'];
+	protected $fillable = ['first_name', 'last_name', 'email'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -37,6 +25,37 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $guarded = ['password'];
+
+	/**
+     * Return validation rules for creating a new user.
+     * 
+     * @return array 
+     */
+    public function getCreationRules()
+    {
+        return [
+            'first_name'            => 'required|max:256',
+    		'last_name' 		    => 'required|max:256',
+            'email'     		    => 'required|email|unique:users',
+            'password'  		    => 'required|min:8|max:20|alpha_dash',
+            'password_confirmation' => 'required|same:password'
+        ];
+    }
+
+    /**
+     * Return validation rules for updating an existing user.
+     * 
+     * @return array 
+     */
+    public function getUpdateRules()
+    {
+        return [
+            'first_name' 		     => 'required|max:256',
+    		'last_name' 		     => 'required|max:256',
+            'email' 			     => "required|email|unique:users,email,$this->id",
+            'password_confirmation'  => 'required_with:password|same:password'
+        ];
+    }
 
 	/**
 	 * Get the unique identifier for the user.
@@ -105,6 +124,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     public function permissions() 
     {
         return $this->hasMany('Permission');
+    }
+
+    /**
+     * Eloquent mutator method, insures that passwords are hashed.
+     * 
+     * @param string
+     */
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] =  Hash::make($value);
     }
 
 }

@@ -1,5 +1,13 @@
 <?= Form::open(['url' => $action, 'method' => $method, 'class' => 'form-horizontal span12']) ?>
 	<?= Form::token() ?>
+	
+	<div class="control-group ">
+		<label for="role_ids[]" class="control-label">Roles</label>
+
+		<div class="controls">
+			<?= Form::select('role_ids[]', Role::lists('name', 'id'), $user->roles()->select('roles.id AS id')->lists('id'), ['class' => 'chosen', 'multiple']) ?>
+		</div>
+	</div>
 
 	<div class="control-group ">
 		<label for="password" class="control-label">Password</label>
@@ -13,12 +21,12 @@
 	</div>
 
 	<div class="control-group ">
-		<label for="confirm_password" class="control-label">Confirm Password</label>
+		<label for="password_confirmation" class="control-label">Confirm Password</label>
 
 		<div class="controls">
-			<?= Form::password('confirm_password') ?>
-			<?php if ($errors->has('confirm_password')): ?>
-				<span class='help-inline alert alert-error'><?= $errors->first('confirm_password') ?></span>
+			<?= Form::password('password_confirmation') ?>
+			<?php if ($errors->has('password_confirmation')): ?>
+				<span class='help-inline alert alert-error'><?= $errors->first('password_confirmation') ?></span>
 			<?php endif ?>
 		</div>
 	</div>
@@ -30,17 +38,6 @@
 			<?= Form::text('email', Input::old('email', $user->email)); ?>
 			<?php if ($errors->has('email')): ?>
 				<span class='help-inline alert alert-error'><?= $errors->first('email') ?></span>
-			<?php endif ?>
-		</div>
-	</div>
-
-	<div class="control-group ">
-		<label for="confirm_email" class="control-label">Confirm Email</label>
-
-		<div class="controls">
-			<?= Form::text('confirm_email', Input::old('confirm_email', $user->confirm_email)); ?>
-			<?php if ($errors->has('confirm_email')): ?>
-				<span class='help-inline alert alert-error'><?= $errors->first('confirm_email') ?></span>
 			<?php endif ?>
 		</div>
 	</div>

@@ -2,7 +2,7 @@
 
 use View, Input, Auth, Session, Redirect, Response, App, Validator;
 
-class HomeController extends \BaseController {
+class HomeController extends BaseController {
 	
 	/**
 	 * Display the admin dashboard page.

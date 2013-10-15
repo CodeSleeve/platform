@@ -2,7 +2,7 @@
 
 use View, Input, Auth, Session, Redirect, Response, App, Validator;
 
-class UsersController extends \BaseController {    
+class UsersController extends BaseController {    
 
 	/**
 	 * View all of the users.
@@ -36,12 +36,15 @@ class UsersController extends \BaseController {
 	public function store()
 	{
 		$user = App::make('User');
-		$user->fill(Input::all());
 		
-		$validation = Validator::make(Input::all(), $user::$rules);
+		$validation = Validator::make(Input::all(), $user->getCreationRules());
 		if ($validation->passes())
 		{
+			$user->fill(Input::all());
+			$user->password = Input::get('password');
 			$user->save();
+			$user->roles()->attach(Input::get('role_ids'));
+
 			Session::flash('success', 'Added user #'.$user->id);
 
 			return Redirect::action('Admin\UsersController@index');
@@ -72,19 +75,39 @@ class UsersController extends \BaseController {
 	public function update($id)
 	{
 		$user = App::make('User')->findOrFail($id);
-		$validation = Validator::make(Input::all(), $user::$rules);
+		$validation = Validator::make(Input::all(), $user->getUpdateRules());
 
 		if ($validation->passes())
 		{
 			$user->fill(Input::all());
-			$user->save();
 
+			if (Input::get('password')) {
+				$user->password = Input::get('password');
+			}
+
+			$user->save();
+			$user->roles()->attach(Input::get('role_ids'));
 			Session::flash('success', 'Updated user #'.$user->id);
 
 			return Redirect::action('Admin\UsersController@index');
 		}
 		
 		return Redirect::action('Admin\UsersController@edit', [$user->id])->withErrors($validation)->withInput();
+	}
+
+	/**
+	 * Delete a specific user record.
+	 * 
+	 * @param  int $id 
+	 * @return Response
+	 */
+	public function destroy($id)
+	{
+		$user = App::make('User')->findOrFail($id);
+		$user->delete();
+		Session::flash('success', 'Record deletion successful!');
+
+		return Redirect::action('Admin\UsersController@index');
 	}
 
 	/**

@@ -2,7 +2,7 @@
 
 use View, Input, Auth, Session, Redirect, Response, App, Validator;
 
-class MenuLinksController extends \BaseController {
+class MenuLinksController extends BaseController {
 
 	/**
 	 * index method - View all of the menu links for a give menu

@@ -11,7 +11,7 @@ class UsersController extends BaseController {
 	 */
 	public function getLogin()
 	{
-		$this->layout = View::make('layouts.login.layout');
+		$this->layout = View::make('layouts.login');
 		$this->layout->nest('content', 'users.login');
 	}
 
@@ -36,5 +36,54 @@ class UsersController extends BaseController {
         Session::flash('error', 'Your username or password was incorrect.');
         return Redirect::action('UsersController@getLogin')->withInput();	
 	}
+
+	/**
+     * Send a password reminder email to a user via their email address.
+     * 
+     * @return Response
+     */
+    public function passwordReminder()
+    {
+        $credentials = ['email' => Input::get('email')];
+        
+        Password::remind($credentials, function($message, $user)
+        {
+            $message->subject('Code Sleeve Platform Password Recovery');
+        });
+
+        return Redirect::action('UsersController@getLogin');
+    }
+
+    /**
+     * Display the password reset form.
+     * 
+     * @param  string $token 
+     * @return Response
+     */
+    public function getPasswordReset($token)
+    {
+        $this->layout = View::make('layouts.login');
+        $this->layout->nest('content', 'users.resetPassword', compact('token'));
+    }
+
+    /**
+     * Resets the user's password.
+     *
+     * @param string $token
+     */
+    public function postPasswordReset()
+    {
+        $credentials = ['email' => Input::get('email')];
+
+        return Password::reset($credentials, function($user, $password)
+        {
+            $user->password = $password;
+            $user->save();
+
+            Session::flash('success', "Your password has been changed. You can login now!");
+
+            return Redirect::action('UsersController@getLogin');
+        });
+    }
 
 }

@@ -2,7 +2,7 @@
 
 use View, Input, Auth, Session, Redirect, Response, App, Validator;
 
-class PhotosController extends \BaseController {    
+class PhotosController extends BaseController {    
 
 	/**
 	 * index method

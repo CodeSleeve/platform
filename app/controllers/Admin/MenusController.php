@@ -2,7 +2,7 @@
 
 use View, Input, Auth, Session, Redirect, Response, App, Validator;
 
-class MenusController extends \BaseController {
+class MenusController extends BaseController {
 
 	/**
 	 * View all of the menus.

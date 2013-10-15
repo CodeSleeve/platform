@@ -42,7 +42,11 @@
 							<i class="icon-edit"></i>
 							Edit
 						</a>
-						<?= HTML::deleteLink(action('Admin\PagesController@destroy', [$page->id])) ?>
+						
+						<a href="<?= action('Admin\PagesController@destroy', [$page->id]) ?>" class="btn btn-danger" data-method="delete">
+							<i class="icon-remove"></i>
+							Delete
+						</a>
 					</td>
 				</tr>
 			<?php endforeach ?>

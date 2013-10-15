@@ -22,6 +22,9 @@ Route::group(['before' => 'guest'], function()
 {
     Route::get('login', 'UsersController@getLogin');
     Route::post('login', ['uses' => 'UsersController@postLogin', 'before' => 'csrf']);
+    Route::post('password/remind', ['uses' => 'UsersController@passwordReminder', 'before' => 'csrf']);
+    Route::get('password/reset/{token}', ['uses' => 'UsersController@getPasswordReset']);
+    Route::post('password/reset/{token}', ['uses' => 'UsersController@postPasswordReset', 'before' => 'csrf']);
 });
 
 // Authentication required routes - Can only be accessed by authenticated users.

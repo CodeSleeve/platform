@@ -38,7 +38,10 @@
 							Edit
 						</a>
 						
-						<?= HTML::deleteLink(action('Admin\UsersController@destroy', [$user->id])) ?>
+						<a href="<?= action('Admin\UsersController@destroy', [$user->id]) ?>" class="btn btn-danger" data-method="delete">
+							<i class="icon-remove"></i>
+							Delete
+						</a>
 					</td>
 				</tr>
 			<?php endforeach ?>

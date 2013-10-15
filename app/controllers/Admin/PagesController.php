@@ -2,7 +2,7 @@
 
 use View, Input, Auth, Session, Redirect, Response, App, Validator;
 
-class PagesController extends \BaseController {
+class PagesController extends BaseController {
 
 	/**
 	 * View all of the pages.

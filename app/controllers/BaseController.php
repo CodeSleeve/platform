@@ -2,7 +2,7 @@
 
 class BaseController extends Controller {
 
-	protected $layout = 'layouts.admin.layout';
+	protected $layout = 'layouts.application';
 
 	/**
 	 * Cached instance of the currently logged in user.

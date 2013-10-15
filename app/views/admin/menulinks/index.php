@@ -40,7 +40,10 @@
 							Edit
 						</a>
 						
-						<?= HTML::deleteLink(action('MenuLinksController@destroy', [$menuLink->id])) ?>
+						<a href="<?= action('Admin\MenuLinksController@destroy', [$menuLink->id]) ?>" class="btn btn-danger" data-method="delete">
+							<i class="icon-remove"></i>
+							Delete
+						</a>
 					</td>
 				</tr>
 			<?php endforeach ?>

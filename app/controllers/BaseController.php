@@ -30,11 +30,25 @@ class BaseController extends Controller {
 	 */
 	protected function setupLayout()
 	{
-		if ( ! is_null($this->layout)) {
-			$this->layout = View::make($this->layout);
-		}
+		$this->layout = View::make($this->layout);
 
 		View::share('currentUser', $this->currentUser);
+		View::share('currentRoute', $this->currentRoute());
+	}
+
+	/**
+	 * Create a route based on controller name and controller action 
+	 * which we can use to style conditionally with
+	 * 
+	 * @return string
+	 */
+	protected function currentRoute()
+	{
+		$controller = explode('@', Route::currentRouteAction())[0];
+		$controller = strtolower(str_replace('Controller', '', $controller));
+		$action = strtolower(explode('@', Route::currentRouteAction())[1]);
+
+		return "$controller $action";
 	}
 
 }

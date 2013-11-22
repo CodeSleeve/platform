@@ -5,22 +5,13 @@ class BaseController extends Controller {
 	protected $layout = 'layouts.application';
 
 	/**
-	 * Cached instance of the currently logged in user.
-	 *
-	 * @var currentUser
-	 */
-	protected $currentUser = null;
-
-	/**
 	 * Constructor method
 	 *
 	 * @param
 	 */
 	function __construct()
 	{
-		if (Auth::check()) {
-			$this->currentUser = Auth::user();
-		}
+		$this->currentUser = Auth::user();
 	}
 
 	/**
@@ -34,6 +25,7 @@ class BaseController extends Controller {
 
 		View::share('currentUser', $this->currentUser);
 		View::share('currentRoute', $this->currentRoute());
+		View::share('currentController', $this->currentController());
 	}
 
 	/**
@@ -51,4 +43,13 @@ class BaseController extends Controller {
 		return "$controller $action";
 	}
 
+	/**
+	 * Create a currentController name which can be used in views if needed
+	 * 
+	 * @return string
+	 */
+	protected function currentController()
+	{
+		return explode('@', Route::currentRouteAction())[0];
+	}
 }

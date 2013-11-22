@@ -1,3 +1,15 @@
 .footer {
 	text-align: center;
 }
+
+.push-down {
+    margin-top: 20px;
+}
+
+.push-down-more {
+    margin-top: 40px;
+}
+
+.push-down-most {
+    margin-top: 60px;
+}

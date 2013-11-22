@@ -22,7 +22,6 @@ class PagesController extends BaseController {
 			return Response::error('404');
 		}
 
-		$this->layout = View::make('layouts.application.layout');
 		$this->layout->nest('content', 'pages.show', compact('page'));
 	}
 	

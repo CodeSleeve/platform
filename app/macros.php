@@ -1,6 +1,14 @@
 <?php
 
-// View helper to determine if links are active or not
+/*
+|--------------------------------------------------------------------------
+| Active Macro
+|--------------------------------------------------------------------------
+|
+| If the $link matches one of the active route patterns we search for then
+| we return $active string else we return the $inactive string.
+|
+*/
 function active($link, $active = 'active', $inactive = null)
 {
     $link = strtolower($link);
@@ -14,7 +22,13 @@ function active($link, $active = 'active', $inactive = null)
     return in_array($link, $matches) ? $active : $inactive;
 }
 
-HTML::macro('active', function($controllerAction, $active = 'active', $inactive = null)
-{
-    return active($controllerAction, $active, $inactive);
-});
+/*
+|--------------------------------------------------------------------------
+| HTML::active macro
+|--------------------------------------------------------------------------
+|
+| If the $link matches one of the active route patterns we search for then
+| we return $active string else we return the $inactive string.
+|
+*/
+HTML::macro('active', 'active');

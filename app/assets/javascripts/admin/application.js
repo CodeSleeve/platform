@@ -15,5 +15,5 @@
 //= require bootstrap.min
 //= require chosen.jquery.min
 //= require bootbox.min
-//= require ../app.js
+//= require app
 //= require_tree .

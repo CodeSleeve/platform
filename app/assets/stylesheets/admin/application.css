@@ -14,5 +14,5 @@
  *= require font-awesome/css/font-awesome-ie7.min
  *= require font-awesome/css/font-awesome.min
  *= require chosen/chosen.min
- *= require_tree admin
+ *= require_tree .
  */

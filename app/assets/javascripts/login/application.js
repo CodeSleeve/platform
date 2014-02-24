@@ -13,4 +13,4 @@
 //= require jquery-1.9.0.min
 //= require jquery-ui-1.10.0.custom.min
 //= require bootstrap.min
-//= require_tree login
+//= require_tree .

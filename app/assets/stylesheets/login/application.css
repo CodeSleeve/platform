@@ -13,5 +13,5 @@
  *= require bootstrap/bootstrap-responsive.min.css
  *= require font-awesome/css/font-awesome-ie7.min
  *= require font-awesome/css/font-awesome.min
- *= require_tree login
+ *= require_tree .
  */

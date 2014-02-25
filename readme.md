@@ -24,11 +24,10 @@ Navigate your browser to `http://localhost:8000/login` and use `admin` and `pass
 Out of the box we use `app/database/development.sqlite` with sqlite driver for the database. If you want to use a different driver then after configuring `app/database.php` be sure to run migrations with this command:
 
 ```php
-	php artisan migrate --bench codesleeve/platform
+	$ php artisan migrate --bench codesleeve/platform --seed
 ```
 
 # How do I manage environments?
 
-We create a file called `env.php` which allows you to set your environment up.
+Checkout the file called `env.php` which allows you to set your environment. If this file doesn't exist we just assume the environment is `production`.
 
-If this file doesn't exist we just assume the environment is `production`.

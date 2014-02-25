@@ -32,7 +32,9 @@
 		],
 		"post-create-project-cmd": [
 			"php artisan key:generate",
- 			"php artisan migrate --bench codesleeve/platform --seed"
+			"php artisan dump-autoload",
+ 			"php artisan migrate --bench codesleeve/platform --seed",
+ 			"php artisan platform:setup"
 		]
 	},
 	"config": {

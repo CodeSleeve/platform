@@ -1,11 +1,11 @@
-<?php namespace Codesleeve\Platform;
+<?php namespace Codesleeve\Platform\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class PlatformSetupCommand extends Command {
-
+class PlatformSetupCommand extends Command
+{
     /**
      * The console command name.
      *
@@ -37,7 +37,7 @@ class PlatformSetupCommand extends Command {
      */
     public function fire()
     {
-        // create the sqlite file for our users
+        file_put_contents(base_path() . '/env.php', '<?php return "local";' . PHP_EOL);
         touch(app_path() . '/database/development.sqlite');
     }
 

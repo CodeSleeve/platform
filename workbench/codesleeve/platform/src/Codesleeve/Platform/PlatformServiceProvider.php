@@ -42,6 +42,13 @@ class PlatformServiceProvider extends ServiceProvider
 		$this->app->register('Codesleeve\AssetPipeline\AssetPipelineServiceProvider');
  		$this->app->register('Codesleeve\Stapler\StaplerServiceProvider');
  		$this->app->register('Authority\AuthorityL4\AuthorityL4ServiceProvider');
+
+		$this->app['platform.setup'] = $this->app->share(function($app)
+        {
+            return new Commands\PlatformSetupCommand;
+        });
+
+		$this->commands('platform.setup');
 	}
 
 	/**

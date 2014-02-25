@@ -34,7 +34,7 @@
 			"php artisan key:generate",
 			"php artisan dump-autoload",
  			"php artisan platform:setup",
- 			"php artisan migrate --bench codesleeve/platform --seed",
+ 			"php artisan migrate --bench codesleeve/platform --seed"
 		]
 	},
 	"config": {

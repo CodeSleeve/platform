@@ -1,18 +1,11 @@
-<ul class="breadcrumb">
-	<li>
-		<a href="<?= action('Admin\HomeController@dashboard') ?>">Dashboard</a> <span class="divider">/</span>
-	</li>
-	
-	<li class="active">
-		<a href="<?= action('Admin\MenuLinksController@index') ?>">Menu Links</a> <span class="divider">/</span>
-	</li>
-		
-	<li class="active">Edit</li>
-</ul>
-
 <h3>
-	<i class="icon-edit"></i>
-	Editing Menulink
-</h3><hr>
+	<i class="fa fa-edit"></i>
+	Editing Link
+</h3>
 
-<?= View::make('admin.menulinks._form', ['menuLink' => $menuLink, 'action' => action('Admin\MenuLinksController@update', [$menuLink->id]), 'method' => 'PUT']) ?>
+<?= render("{$viewpath}::menulinks._form", [
+	'menuLink' => $menuLink,
+	'action' => action("{$namespace}\MenuLinkController@update", [$menuLink->menu_id, $menuLink->id]),
+	'method' => 'PUT',
+	'cancel' => action("{$namespace}\MenuLinkController@index", [$menuLink->menu_id]),
+]) ?>

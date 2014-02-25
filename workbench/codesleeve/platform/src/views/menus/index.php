@@ -24,6 +24,10 @@
 				<tr>
 					<td><?= $menu->title; ?></td>
 					<td>
+						<a href="<?= action("{$namespace}\MenuLinkController@index", [$menu->id]) ?>" class="btn btn-success">
+							<i class="fa fa-external-link"></i>
+						</a>
+
 						<a href="<?= action("{$namespace}\MenuController@edit", [$menu->id]) ?>" class="btn btn-warning">
 							<i class="fa fa-edit"></i>
 						</a>

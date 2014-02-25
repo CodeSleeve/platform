@@ -19,6 +19,7 @@ class CreateMenuLinksTable extends migration{
 			$table->integer('page_id');
 			$table->string('title');
 			$table->string('url');
+			$table->integer('order');
 			$table->timestamps();
 		});
 	}

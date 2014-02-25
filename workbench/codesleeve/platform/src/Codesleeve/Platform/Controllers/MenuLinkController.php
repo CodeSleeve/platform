@@ -1,8 +1,12 @@
 <?php namespace Codesleeve\Platform\Controllers;
 
-use View, Input, Auth, Session, Redirect, Response, App, Validator;
+use Codesleeve\Platform\Models\Menu;
+use Codesleeve\Platform\Models\MenuLink;
+use Codesleeve\Platform\Models\Page;
+use Codesleeve\Platform\Validators\MenuLinkValidator;
+use Input, Session, Redirect;
 
-class MenuLinksController extends BaseController
+class MenuLinkController extends BaseController
 {
 	/**
 	 * Create a new menulink controller
@@ -10,10 +14,14 @@ class MenuLinksController extends BaseController
 	 * @param Menu     $menus
 	 * @param Menulink $menuLinks
 	 */
-	public function __construct(Menu $menus, Menulink $menuLinks)
+	public function __construct(Menu $menus, MenuLink $menuLinks, Page $pages, MenuLinkValidator $validator)
 	{
+		parent::__construct();
+
 		$this->menus = $menus;
 		$this->menuLinks = $menuLinks;
+		$this->pages = $pages;
+		$this->validator = $validator;
 	}
 
 	/**
@@ -24,10 +32,10 @@ class MenuLinksController extends BaseController
 	 */
 	public function index($menuId)
 	{	
-		$menu = $this->menu->findOrFail($menuId);
+		$menu = $this->menus->findOrFail($menuId);
 		$menuLinks = $menu->menuLinks()->paginate();
 
-		$this->layout->nest('content', 'codesleeve.menulinks.index', compact('menu', 'menuLinks'));
+		$this->layout->nest('content', "{$this->viewpath}::menulinks.index", compact('menu', 'menuLinks'));
 	}
 
 	/**
@@ -38,22 +46,12 @@ class MenuLinksController extends BaseController
 	public function create($menuId)
 	{
 		$menu = $this->menus->findOrFail($menuId);
-		$menuLink = $this->menuLinks;
-		$menuLink->menu_id = $menuId;
 
-		$this->layout->nest('content', 'codesleeve.menulinks.create', compact('menu', 'menuLink'));
-	}
+		$menuLink = $this->menuLinks->fill(Input::old());
 
-	/**
-	 * edit method - Show the form to edit a specific menulink.
-	 *
-	 * @param  int   $id
-	 * @return  Laravel\Response
-	 */
-	public function edit($id)
-	{
-		$menuLink = $this->menuLinks->findOrFail($id);
-		$this->layout->nest('content', 'codesleeve.menulinks.edit', compact('menuLink'));
+		$menuLink->available_pages = $this->pages->lists('title', 'id');
+
+		$this->layout->nest('content', "{$this->viewpath}::menulinks.create", compact('menu', 'menuLink'));
 	}
 
 	/**
@@ -65,23 +63,42 @@ class MenuLinksController extends BaseController
 	public function store($menuId)
 	{
 		$menu = $this->menus->findOrFail($menuId);
+
 		$menuLink = $this->menuLinks;
+
 		$menuLink->fill(Input::all());
-		
-		$validation = Validator::make(Input::all(), $menuLink->rules);
 
-		if ($validation->fails())
-		{
-			return Redirect::action('Codesleeve\MenuLinksController@new', [$menuId])->withErrors($validation)->withInput();
-		}
+		$menuLink->page_id = Input::get('page_id', 0);
 
-		if ($menu->menuLinks()->insert($menuLink))
-		{
-			Session::flash('success', 'Menu link successfully created');
-			return Redirect::action('Codesleeve\MenuLinksController@edit', [$menuLink->id]);
-		}
+		$menuLink->menu_id = $menu->id;
+
+		$maxOrder = $this->menuLinks->where('menu_id', $menu->id)->max('order');
+
+		$menuLink->order = $maxOrder ?: 0;
+
+		$this->validator->validate(Input::all(), $menuLink);
 		
-		return Redirect::action('Codesleeve\MenuLinksController@new', [$menuId])->withInput();
+		$menuLink->save();
+
+		Session::flash('success', 'Menu link successfully created');
+
+		return Redirect::action("{$this->namespace}\MenuLinkController@index", [$menuId]);
+	}
+
+	/**
+	 * edit method - Show the form to edit a specific menulink.
+	 *
+	 * @return  Laravel\Response
+	 */
+	public function edit($menuId, $linkId)
+	{
+		$menuLink = $this->menuLinks->findOrFail($linkId);
+
+		$menuLink = $menuLink->fill(Input::old());
+
+		$menuLink->available_pages = $this->pages->lists('title', 'id');
+
+		$this->layout->nest('content', "{$this->viewpath}::menulinks.edit", compact('menuLink'));
 	}
 
 	/**
@@ -90,23 +107,21 @@ class MenuLinksController extends BaseController
 	 * @param  $id - The id of the menu link being updated
 	 * @return Laravel\Response
 	 */
-	public function update($id)
+	public function update($menuId, $linkId)
 	{
-		$menuLink = App::make('MenuLink')->findOrFail($id);
-		$validation = Validator::make(Input::all(), $menuLink->rules);
-		if ($validation->fails()) {
-			return Redirect::action('Codesleeve\MenuLinksController@edit', [$id])->withErrors($validation)->withInput();
-		}
+		$menuLink = $this->menuLinks->findOrFail($linkId);
 
 		$menuLink->fill(Input::all());
-		if ($menuLink->save()) 
-		{
-			Session::flash('success', 'Menu link successfully updated');
-			return Redirect::action('Codesleeve\MenuLinksController@edit', [$id]);
-		}
 
-		Session::flash('success', 'Menu link update unsuccessful, please try again.');
-		return Redirect::action('Codesleeve\MenuLinksController@edit', [$id]);
+		$menuLink->page_id = Input::get('page_id', 0);
+
+		$this->validator->validate(Input::all(), $menuLink);
+		
+		$menuLink->save();
+
+		Session::flash('success', 'Menu link successfully updated');
+
+		return Redirect::action("{$this->namespace}\MenuLinkController@index", [$menuId]);
 	}
 
 	/**
@@ -115,8 +130,14 @@ class MenuLinksController extends BaseController
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($menuId, $linkId)
 	{
-		
+		$menuLink = $this->menuLinks->findOrFail($linkId);
+
+		$menuLink->delete();
+
+		Session::flash('success', "Menu link successfully removed");
+
+		return Redirect::action("{$this->namespace}\MenuLinkController@index", [$menuId]);
 	}
 }

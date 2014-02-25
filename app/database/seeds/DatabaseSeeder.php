@@ -11,8 +11,7 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		//$this->call('Codesleeve\Platform\RolesTableSeeder');
-		//$this->call('Codesleeve\Platform\UsersTableSeeder');
+		$this->call('Codesleeve\Platform\Seeds\PlatformTableSeeder');
 	}
 
 }

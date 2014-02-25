@@ -1,7 +1,21 @@
 /**
+ * this will send the csrf token headers on every ajax request 
+ * made via jquery...
+ */
+$(function()
+{
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+});
+
+/**
  * Initialize plugins
  */
-$(function(){
+$(function()
+{
     $('.chosen').chosen();
     $('.datepicker').datepicker({ 
     	changeMonth: true,
@@ -37,10 +51,12 @@ $(function(){
  *     // Will trigger the route Route::delete('post/(:id)')
  * 
  */
-$(function(){
+$(function()
+{
     $('[data-method]').append(function(){
         return "\n"+
         "<form action='"+$(this).attr('href')+"' method='POST' style='display:none'>\n"+
+        "   <input type='hidden' name='_token' value='"+$('meta[name="csrf-token"]').attr('content')+"'>\n"+
         "   <input type='hidden' name='_method' value='"+$(this).attr('data-method')+"'>\n"+
         "</form>\n"
     })

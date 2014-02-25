@@ -1,5 +1,7 @@
 <?php namespace Codesleeve\Platform\Controllers;
 
+use Input, View, Password, Session, Redirect;
+
 class PasswordResetController extends BaseController
 {
     /**
@@ -10,9 +12,9 @@ class PasswordResetController extends BaseController
      */
     public function create()
     {
-        $this->layout = View::make($this->viewpath . 'layouts.login');
+        $this->layout = View::make("{$this->viewpath}::layouts.login");
 
-        $this->layout->nest('content', $this->viewpath . 'passwordReset.create', compact('token'));
+        $this->layout->nest('content', "{$this->viewpath}::passwordReset.create", compact('token'));
     }
 
 	/**
@@ -29,6 +31,8 @@ class PasswordResetController extends BaseController
             $message->subject('Code Sleeve Platform Password Recovery');
         });
 
+        Session::flash('success', "An email with instructions on how to recovery your password as been sent.");
+
         return Redirect::action("{$this->namespace}\AuthController@create");
     }
 
@@ -40,9 +44,9 @@ class PasswordResetController extends BaseController
      */
     public function edit($token)
     {
-        $this->layout = View::make($this->viewpath . 'layouts.login');
+        $this->layout = View::make("{$this->viewpath}::layouts.login");
 
-        $this->layout->nest('content', $this->viewpath . 'passwordReset.edit', compact('token'));
+        $this->layout->nest('content', "{$this->viewpath}::passwordReset.edit", compact('token'));
     }
 
     /**

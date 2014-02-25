@@ -1,8 +1,8 @@
 <?= Form::open(['url' => $action, 'method' => $method, 'class' => 'form-horizontal form']) ?>
 
-	<div class="control-group ">
-		<?= Form::label('title', 'Title', ['class' => 'control-label']) ?>
-		<?= Form::text('title', Input::old('title', $menu->title)) ?>
+	<div class="form-group">
+		<?= Form::label('title', 'Title') ?>
+		<?= Form::text('title', $menu->title, ['class' => 'form-control']) ?>
 		<?= show_message_when('title', $errors) ?>
 	</div>
 

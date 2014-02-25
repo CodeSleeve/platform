@@ -14,7 +14,7 @@ class MenuLink extends \Eloquent
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['menu_id', 'page_id', 'title', 'url'];
+	protected $fillable = ['page_id', 'title', 'url'];
 
 	/**
 	 * A menu link belongs to a menu.
@@ -24,5 +24,29 @@ class MenuLink extends \Eloquent
 	public function menu()
 	{
 		return $this->belongsTo('Codesleeve\Platform\Models\Menu');
+	}
+
+	/**
+	 * A menu link belongs to a page.
+	 *
+	 * @return belongsTo
+	 */
+	public function page()
+	{
+		return $this->belongsTo('Codesleeve\Platform\Models\Page');
+	}
+
+	/**
+	 * Show a url if one is set else we fall back to a page
+	 *
+	 * @return string
+	 */
+	public function getMenuUrlAttribute()
+	{
+		$url = $this->attributes['url'];
+
+		$pageUrl = $this->page ? $this->page->page_url : null;
+
+		return $url ?: $pageUrl;
 	}
 }

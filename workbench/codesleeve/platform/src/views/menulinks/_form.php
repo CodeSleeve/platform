@@ -1,41 +1,26 @@
 <?= Form::open(['url' => $action, 'method' => $method, 'class' => 'form-horizontal span12']) ?>
 	
-	<div class="control-group ">
-		<label for="title" class="control-label">Title</label>
-		
-		<div class="controls">
-			<?= Form::text('title', Input::old('title', $menuLink->title)) ?>
-			<?php if ($errors->has('title')): ?>
-				<span class='help-inline alert alert-error'><?= $errors->first('title') ?></span>
-			<?php endif ?>
-		</div>
+	<div class="form-group ">
+		<label for="title">Title</label>
+		<?= Form::text('title', $menuLink->title, ['class' => 'form-control']) ?>
+		<?= show_message_when('title', $errors) ?>
 	</div>
 	
-	<div class="control-group ">
-		<label for="page_id" class="control-label">Page</label>
-
-		<div class="controls">
-			<?= Form::select('page_id', Page::lists('title', 'id'), Input::old('page_id', $menuLink->page_id)) ?>
-			<?php if ($errors->has('page_id')): ?>
-				<span class='help-inline alert alert-error'><?= $errors->first('page_id') ?></span>
-			<?php endif ?>
-		</div>
+	<div class="form-group ">
+		<label for="page_id">Page</label>
+		<?= Form::select('page_id', $menuLink->available_pages, $menuLink->page_id, ['class' => 'form-control']) ?>
+		<?= show_message_when('page_id', $errors) ?>
 	</div>
 
-	<div class="control-group ">
-		<label for="url" class="control-label">URL</label>
-
-		<div class="controls">
-			<?= Form::text('url', Input::old('url', $menuLink->url)) ?>
-			<?php if ($errors->has('url')): ?>
-				<span class='help-inline alert alert-error'><?= $errors->first('url') ?></span>
-			<?php endif ?>
-		</div>
+	<div class="form-group ">
+		<label for="url">URL (if you specify a url here it will override the page you selected)</label>
+		<?= Form::text('url', $menuLink->url, ['class' => 'form-control']) ?>
+		<?= show_message_when('url', $errors) ?>
 	</div>
 
 	<div class="actions">
 		<?= Form::submit('Save', ['class' => 'btn btn-primary']) ?>
 
-		or <a href="<?= action('Admin\MenuLinksController@index', [$menuLink->menu_id]) ?>">Cancel</a>
+		or <a href="<?= $cancel ?>">Cancel</a>
 	</div>
 <?= Form::close() ?>

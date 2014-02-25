@@ -10,10 +10,7 @@ Route::group(['prefix' => 'admin', 'before' => 'csrf'], function()
 	Route::any('logout', "{$namespace}\AuthController@destroy");
 
 	// password resets
-	Route::get('password/remind', "{$namespace}\PasswordResetController@create");
-	Route::post('password/remind', "{$namespace}\PasswordResetController@store");
-	Route::get('password/reset/{token}', "{$namespace}\PasswordResetController@edit");
-	Route::post('password/reset/{token}', "{$namespace}\PasswordResetController@update");
+	Route::resource('password-reset', "{$namespace}\PasswordResetController");
 
 	// users who are authenticated
 	Route::group(['before' => 'platform.auth'], function() use ($namespace)
@@ -25,10 +22,7 @@ Route::group(['prefix' => 'admin', 'before' => 'csrf'], function()
 		Route::resource('menus', "{$namespace}\MenuController");
 
 		// menu links
-		// Route::resource('menu-links', "{$namespace}\MenuLinksController");
-		// Route::get('menus/{id}/menu-links', "{$namespace}\MenuLinksController@index");
-		// Route::get('menus/{id}/menu-links/create', "{$namespace}\MenuLinksController@create");
-		// Route::post('menus/{id}/menu-links', "{$namespace}\MenuLinksController@store");
+		Route::resource('menus.menu-links', "{$namespace}\MenuLinkController");
 
 		// pages
 		Route::resource('pages', "{$namespace}\PageController");

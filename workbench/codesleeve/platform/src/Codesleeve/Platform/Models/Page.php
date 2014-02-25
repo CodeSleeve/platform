@@ -16,4 +16,15 @@ class Page extends \Eloquent
 	 */
 	protected $fillable = ['content', 'title', 'home_page', 'slug'];
 
+	public function getPageUrlAttribute()
+	{
+		$slug = $this->id;
+
+		if ($this->slug)
+		{
+			$slug .= "-{$this->slug}";
+		}
+
+		return action('Codesleeve\Platform\Controllers\PageController@show', [$slug]);
+	}
 }

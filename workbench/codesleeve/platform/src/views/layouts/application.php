@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+    <meta name="csrf-token" content="<?= csrf_token() ?>">
+
+    <link rel="shortcut icon" href="/favicon.ico">
 
     <title><?= isset($title) ? $title : 'Codesleeve' ?></title>
 

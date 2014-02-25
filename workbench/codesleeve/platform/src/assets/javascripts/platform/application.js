@@ -10,7 +10,7 @@
 //
 // The available directives right now are require, require_directory, and require_tree
 //  
-//= require jquery/jquery-1.9.0
+//= require jquery/jquery
 //= require jquery/jquery-ui-1.10.0.custom
 //= require twitter/js/bootstrap
 //= require chosen/chosen.jquery

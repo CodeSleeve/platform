@@ -32,6 +32,7 @@
                 <?= render("{$viewpath}::layouts._side_navigation") ?>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <?= render("{$viewpath}::layouts._messages") ?>
                 <?= render("{$viewpath}::layouts._breadcrumbs", compact("breadcrumbs")) ?>
                 <?= $content ?>
             </div>

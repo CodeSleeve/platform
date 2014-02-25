@@ -1,6 +1,7 @@
 <?php namespace Codesleeve\Platform\Controllers;
 
-use Auth, Controller, Route, View, User;
+use Auth, Controller, Route, User, View;
+use Codesleeve\Platform\Support\Breadcrumbs;
 
 class BaseController extends Controller
 {
@@ -44,6 +45,7 @@ class BaseController extends Controller
 	function __construct()
 	{
 		$this->currentUser = Auth::user();
+		$this->breadcrumbs = Breadcrumbs::fromUrl();
 	}
 
 	/**
@@ -57,7 +59,7 @@ class BaseController extends Controller
 
 		View::share('viewpath', $this->viewpath);
 		View::share('namespace', $this->namespace);
-		View::share('breadcrumbs', $this->breadcrumbs());
+		View::share('breadcrumbs', $this->breadcrumbs);
 		View::share('currentUser', $this->currentUser);
 		View::share('currentRoute', $this->currentRoute());
 		View::share('currentController', $this->currentController());
@@ -88,35 +90,4 @@ class BaseController extends Controller
 		return explode('@', Route::currentRouteAction())[0];
 	}
 
-	/**
-	 * Create an array of breadcrumbs to use if needed on a page
-	 * 
-	 * @return array
-	 */
-	protected function breadcrumbs()
-	{
-        $breadCrumbs = array();
-        $paths = explode('/', trim(Route::getCurrentRoute()->getPath(), '/'));
-
-        $namespace = array_shift($paths);
-        $url = url($namespace);
-
-        foreach ($paths as $path)
-        {
-            if (strpos($path, '{') == 0 && strpos($path, '}') == 0)
-            {
-                $url .= "/{$path}";
-                $pretty = ucfirst(str_replace('-', ' ', $path));
-                
-                $breadCrumb = new \StdClass;
-                $breadCrumb->name = $pretty;
-                $breadCrumb->url = $url;
-                $breadCrumb->active = "";
-
-                $breadCrumbs[] = $breadCrumb;
-            }
-        }
-
-        return $breadCrumbs;		
-	}
 }

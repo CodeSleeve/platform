@@ -46,6 +46,17 @@ class MenuController extends BaseController
 	}
 
 	/**
+	 * [show description]
+	 * 
+	 * @param  [type] $id
+	 * @return [type]
+	 */
+	public function show($id)
+	{
+		return Redirect::action("{$this->namespace}\MenuLinkController@index", [$id]);
+	}
+
+	/**
 	 * Show the form to edit a specific menu.
 	 *
 	 * @param  int   $id

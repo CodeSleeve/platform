@@ -1,7 +1,7 @@
 Codesleeve Platform
 ========
 
-# Quickstart
+## Quickstart
 
 Download by running this command in your console
 
@@ -16,10 +16,17 @@ Start up a new laravel serve
     php artisan serve
 ```
 
-Navigate your browser to `http://localhost:8000/login` and use `admin` and `password` for the username and password.
+Navigate your browser to the server
 
+```
+	http://localhost:8000
+```
 
-# How do I use a different database?
+and use **admin** and **password** for the username and password.
+
+## FAQ
+
+### How do I use a different database?
 
 Out of the box we use `app/database/development.sqlite` with sqlite driver for the database. If you want to use a different driver then after configuring `app/database.php` be sure to run migrations with this command:
 
@@ -27,7 +34,7 @@ Out of the box we use `app/database/development.sqlite` with sqlite driver for t
 	$ php artisan migrate --bench codesleeve/platform --seed
 ```
 
-# How do I manage environments?
+### How do I manage environments?
 
 Checkout the file called `env.php` which allows you to set your environment. If this file doesn't exist we just assume the environment is `production`.
 

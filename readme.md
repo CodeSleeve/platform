@@ -7,7 +7,6 @@ Download by running this command in your console
 
 ```
     $ composer create-project --stability="dev" codesleeve/platform your-project-name
-
 ```
 
 Start up a new laravel serve

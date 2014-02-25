@@ -1,17 +1,12 @@
-<ul class="breadcrumb">
-	<li>
-		<a href="<?= action('Admin\HomeController@dashboard') ?>">Dashboard</a> <span class="divider">/</span>
-	</li>
-	
-	<li class="active">Menus</li>
-</ul>
 
-<div>
-	<a class="btn btn-primary" href="<?=  action('Admin\MenusController@create') ?>">
-		<i class="icon-plus"></i>
-		Create New Menu
-	</a>
-</div><hr>
+<div class="row">
+	<div class="col-xs-12">
+		<a class="btn btn-primary pull-right" href="<?=  action("{$namespace}\MenuController@create") ?>">
+			<i class="fa fa-plus"></i>
+			Create New Menu
+		</a>
+	</div>
+</div>
 
 <?php if(count($menus) == 0): ?>
 	<p>No menus.</p>
@@ -29,14 +24,12 @@
 				<tr>
 					<td><?= $menu->title; ?></td>
 					<td>
-						<a href="<?= action('Admin\MenusController@edit', [$menu->id]) ?>" class="btn">
-							<i class="icon-edit"></i>
-							Edit
+						<a href="<?= action("{$namespace}\MenuController@edit", [$menu->id]) ?>" class="btn btn-warning">
+							<i class="fa fa-edit"></i>
 						</a>
 						
-						<a href="<?= action('Admin\MenusController@destroy', [$menu->id]) ?>" class="btn btn-danger" data-method="delete">
-							<i class="icon-remove"></i>
-							Delete
+						<a href="<?= action("{$namespace}\MenuController@destroy", [$menu->id]) ?>" class="btn btn-danger" data-method="delete">
+							<i class="fa fa-times"></i>
 						</a>
 					</td>
 				</tr>

@@ -1,20 +1,15 @@
-<?= Form::open(['url' => $action, 'method' => $method, 'class' => 'form-horizontal span12']) ?>
-	<?= Form::token() ?>
+<?= Form::open(['url' => $action, 'method' => $method, 'class' => 'form-horizontal form']) ?>
 
 	<div class="control-group ">
 		<?= Form::label('title', 'Title', ['class' => 'control-label']) ?>
-
-		<div class="controls">
-			<?= Form::text('title', Input::old('title', $menu->title)) ?>
-			<?php if ($errors->has('title')): ?>
-				<span class='help-inline alert alert-error'><?= $errors->first('title') ?></span>
-			<?php endif ?>
-		</div>
+		<?= Form::text('title', Input::old('title', $menu->title)) ?>
+		<?= show_message_when('title', $errors) ?>
 	</div>
 
 	<div class="actions">
 		<?= Form::submit('Save', ['class' => 'btn btn-primary']) ?>
 
-		or <a href="<?= action('Admin\MenusController@index') ?>">Cancel</a>
+		or <a href="<?= $cancel ?>">Cancel</a>
 	</div>
+
 <?= Form::close() ?>

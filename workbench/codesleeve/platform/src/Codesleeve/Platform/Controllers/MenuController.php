@@ -1,5 +1,8 @@
 <?php namespace Codesleeve\Platform\Controllers;
 
+use Codesleeve\Platform\Models\Menu;
+use Codesleeve\Platform\Validators\MenuValidator;
+
 use View, Input, Auth, Session, Redirect, Response, App, Validator;
 
 class MenuController extends BaseController
@@ -12,6 +15,8 @@ class MenuController extends BaseController
 	 */
 	public function __construct(Menu $menus, MenuValidator $validator)
 	{
+		parent::__construct();
+
 		$this->menus = $menus;
 		$this->validator = $validator;
 	}
@@ -25,7 +30,7 @@ class MenuController extends BaseController
 	{
 		$menus = $this->menus->paginate();
 
-		$this->layout->nest('content', 'admin.menus.index', compact('menus'));
+		$this->layout->nest('content', "{$this->viewpath}::menus.index", compact('menus'));
 	}
 
 	/**
@@ -37,7 +42,7 @@ class MenuController extends BaseController
 	{
 		$menu = $this->menus->fill(Input::old());
 
-		$this->layout->nest('content', 'admin.menus.create', compact('menu'));
+		$this->layout->nest('content', "{$this->viewpath}::menus.create", compact('menu'));
 	}
 
 	/**
@@ -52,7 +57,7 @@ class MenuController extends BaseController
 
 		$menu = $menu->fill(Input::old());
 
-		$this->layout->nest('content', 'admin.menus.edit', compact('menu'));
+		$this->layout->nest('content', "{$this->viewpath}::menus.edit", compact('menu'));
 	}
 
 	/**
@@ -72,7 +77,7 @@ class MenuController extends BaseController
 
 		Session::flash('message', 'Added menu #'.$menu->id);
 
-		return Redirect::action("{$namespace}\MenusController@edit", [$menu->id]);
+		return Redirect::action("{$this->namespace}\MenuController@index");
 	}
 
 	/**
@@ -93,7 +98,7 @@ class MenuController extends BaseController
 
 		Session::flash('message', 'Updated menu #'.$menu->id);
 
-		return Redirect::action("{$namespace}\MenusController@edit", [$menu->id]);
+		return Redirect::action("{$this->namespace}\MenuController@index");
 	}
 
 	/**
@@ -110,6 +115,6 @@ class MenuController extends BaseController
 
 		Session::flash('message', 'Deleted menu #' . $menu->id);
 
-		return Redirect::action("{$namespace}\MenusController@index");
+		return Redirect::action("{$this->namespace}\MenuController@index");
 	}
 }

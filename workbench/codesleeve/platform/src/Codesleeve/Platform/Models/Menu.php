@@ -7,7 +7,7 @@ class Menu extends \Eloquent
 	 * 
 	 * @var string
 	 */
-	protected $table = "platform_menu";
+	protected $table = "platform_menus";
 
 	/**
 	 * The fillable array lets laravel know which fields are fillable

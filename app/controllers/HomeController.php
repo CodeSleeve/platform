@@ -15,14 +15,9 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function index()
+	public function showWelcome()
 	{
-		$page = Page::where('pages.home_page', '=', true)->first();
-		if ($page) {
-			return View::make('pages.show', compact('page'));
-		}
-		
-		return View::make('home.index');
+		return View::make('hello');
 	}
 
 }

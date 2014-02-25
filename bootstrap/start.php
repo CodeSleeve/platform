@@ -13,31 +13,29 @@
 
 $app = new Illuminate\Foundation\Application;
 
-$app->redirectIfTrailingSlash();
-
 /*
 |--------------------------------------------------------------------------
 | Detect The Application Environment
 |--------------------------------------------------------------------------
 |
-| Laravel takes a dead simple approach to your application environments
-| so you can just specify a machine name or HTTP host that matches a
-| given environment, then we will automatically detect it for you.
+| I have modified this to be a little more flexible. We don't always
+| know our hostnames when developing so basically create a file called
+| env.php in your project's root and have it look like this
+|
+| 		<?php return "local";
 |
 */
 
 $env = $app->detectEnvironment(function()
 {
-    if (isset($_SERVER['LARAVEL_ENV'])) {
-        return $_SERVER['LARAVEL_ENV'];
-    }
-   
-    $localhosts = ['localhost:8000'];
-    if (isset($_SERVER['HTTP_HOST']) && in_array($_SERVER['HTTP_HOST'], $localhosts)) {
-        return 'local';
-    }
+	$environment = __DIR__ . '/../env.php';
 
-    return 'production';
+	if (file_exists($environment))
+	{
+		return include $environment;
+	}
+
+	return 'production';
 });
 
 /*
@@ -58,7 +56,7 @@ $app->bindInstallPaths(require __DIR__.'/paths.php');
 | Load The Application
 |--------------------------------------------------------------------------
 |
-| Here we will load the Illuminate application. We'll keep this is in a
+| Here we will load this Illuminate application. We will keep this in a
 | separate location so we can isolate the creation of an application
 | from the actual running of the application with a given request.
 |

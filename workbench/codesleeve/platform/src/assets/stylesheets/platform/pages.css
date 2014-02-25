@@ -1,0 +1,34 @@
+/**
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any Css/Less files within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+ * can be referenced here using a relative path.
+ *
+ * It's not advisable to add code directly here, but if you do, it'll appear in whatever order it 
+ * gets included (e.g. say you have require_tree . then the code will appear after all the directories 
+ * but before any files alphabetically greater than 'application.css' 
+ *
+ *= require twitter/css/bootstrap
+ *= require twitter/css/bootstrap-theme
+ *= require font-awesome/css/font-awesome
+ *= require chosen/chosen
+ *= require dashboard
+ *= require_self
+ */
+
+.footer {
+	text-align: center;
+}
+
+.push-down {
+    margin-top: 20px;
+}
+
+.push-down-more {
+    margin-top: 40px;
+}
+
+.push-down-most {
+    margin-top: 60px;
+}

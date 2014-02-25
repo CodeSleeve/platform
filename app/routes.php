@@ -11,8 +11,21 @@
 |
 */
 
-// default route
-Route::get('/', 'HomeController@index');
+Route::get('/', function()
+{
+	return View::make('hello');
+});
 
-// include codesleeve platform default routes
-include 'platform.routes.php';
+
+/*
+|--------------------------------------------------------------------------
+| Validation Exceptions
+|--------------------------------------------------------------------------
+| 
+| If we encounter one of these, let's redirect to the correct place
+|
+*/
+App::error(function(\Codesleeve\Platform\Exceptions\ValidatorException $exception)
+{
+    return Redirect::to($exception->getAction())->withErrors($exception->getValidator())->withInput($exception->getInput());
+});

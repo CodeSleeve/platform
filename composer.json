@@ -1,23 +1,14 @@
 {
-    "name": "codesleeve/platform",
-    "description": "The core platform package for codesleeve",
-    "authors": [
-        {
-            "name": "Kelt Dockins",
-            "email": "kelt@codesleeve.com"
-        },
-        {
-            "name": "Travis Bennett",
-            "email": "travis@codesleeve.com"
-        }
-    ],
-	"keywords": ["framework", "laravel", "codesleeve", "platform"],
+	"name": "laravel/laravel",
+	"description": "The Laravel Framework.",
+	"keywords": ["framework", "laravel"],
+	"license": "MIT",
 	"require": {
-		"laravel/framework": "4.0.*",
+		"laravel/framework": "4.1.*",
+		"codesleeve/asset-pipeline": "dev-master",
+		"codesleeve/stapler": "dev-master",
 		"machuga/authority-l4" : "dev-master",
 		"way/generators": "dev-master",
-		"codesleeve/stapler": "dev-master",
-		"codesleeve/asset-pipeline": "dev-master",
 		"loic-sharma/profiler": "1.1.*"
 	},
 	"autoload": {
@@ -27,29 +18,25 @@
 			"app/models",
 			"app/database/migrations",
 			"app/database/seeds",
-			"app/tests/TestCase.php",
-			"app/composers"
+			"app/tests/TestCase.php"
 		]
 	},
 	"scripts": {
 		"post-install-cmd": [
+			"php artisan clear-compiled",
 			"php artisan optimize"
 		],
-		"pre-update-cmd": [
-			"php artisan clear-compiled"
-		],
 		"post-update-cmd": [
+			"php artisan clear-compiled",
 			"php artisan optimize"
 		],
 		"post-create-project-cmd": [
 			"php artisan key:generate",
-            "php artisan platform:setup",
-            "php artisan migrate --seed"
+ 			"php artisan migrate --bench codesleeve/platform --seed"
 		]
 	},
 	"config": {
 		"preferred-install": "dist"
 	},
-	"minimum-stability": "dev",
-    "license": "MIT"
+	"minimum-stability": "dev"
 }

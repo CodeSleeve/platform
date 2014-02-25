@@ -27,13 +27,11 @@ ClassLoader::addDirectories(array(
 |
 | Here we will configure the error logger setup for the application which
 | is built on top of the wonderful Monolog library. By default we will
-| build a rotating log file setup which creates a new file each day.
+| build a basic log file setup which creates a single file for logs.
 |
 */
 
-$logFile = 'log-'.php_sapi_name().'.txt';
-
-Log::useDailyFiles(storage_path().'/logs/'.$logFile);
+Log::useFiles(storage_path().'/logs/laravel.log');
 
 /*
 |--------------------------------------------------------------------------
@@ -60,7 +58,7 @@ App::error(function(Exception $exception, $code)
 |
 | The "down" Artisan command gives you the ability to put an application
 | into maintenance mode. Here, you will define what is displayed back
-| to the user if maintenace mode is in effect for this application.
+| to the user if maintenance mode is in effect for the application.
 |
 */
 
@@ -81,41 +79,3 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
-
-/*
-|--------------------------------------------------------------------------
-| Require The Composers File
-|--------------------------------------------------------------------------
-|
-| For this application all view composers are defined as classes in app/composers 
-| and initialized via in app/composers.php.  The app/composers directly has already 
-| been registered with the auoloader in the compoers.json file, so all we need to 
-| do here is include the app/composers.php file
-|
-*/
-
-require app_path().'/composers.php';
-
-/*
-|--------------------------------------------------------------------------
-| Require The Bindings File
-|--------------------------------------------------------------------------
-|
-| The bindings.php file provides a central localtion to register common bindings 
-| used throughout this application.
-|
-*/
-
-require app_path().'/bindings.php';
-
-/*
-|--------------------------------------------------------------------------
-| Require The Macros File
-|--------------------------------------------------------------------------
-|
-| Finally we'll load the macros file for the application. This provides a
-| a convenient and central location for storing our HTML helper macros.
-|
-*/
-
-require app_path().'/macros.php';

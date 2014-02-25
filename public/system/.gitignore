@@ -1,5 +1,0 @@
-# Laravel Stapler file uploads
-*
-
-# Allow this file to be seen so the file uploads directory is available
-!.gitignore

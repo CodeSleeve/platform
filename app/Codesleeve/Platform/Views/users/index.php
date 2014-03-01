@@ -1,15 +1,3 @@
-
-<div class="row">
-	<div class="col-xs-12">
-		<a class="pull-right btn btn-primary" href="<?=  action("{$namespace}\UserController@create") ?>">
-			<i class="fa fa-plus"></i>
-			Create New User
-		</a>
-	</div>
-</div>
-
-<hr>
-
 <?php if(count($users) == 0): ?>
 	<p>No users.</p>
 <?php else: ?>
@@ -19,7 +7,12 @@
 				<th>Email</th>
 				<th>First Name</th>
 				<th>Last Name</th>
-				<th>Actions</th>
+				<th>
+					<a class="pull-right btn btn-primary" href="<?=  action("{$namespace}\UserController@create") ?>">
+						<i class="fa fa-plus"></i>
+						New User
+					</a>
+				</th>
 			</tr>
 		</thead>
 

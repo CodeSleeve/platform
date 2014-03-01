@@ -1,15 +1,3 @@
-
-<div class="row">
-	<div class="col-xs-12">
-		<a class="btn btn-primary pull-right" href="<?=  action("{$namespace}\RoleController@create") ?>">
-			<i class="fa fa-plus"></i>
-			Create New Role
-		</a>
-	</div>
-</div>
-
-<hr>
-
 <?php if(count($roles) == 0): ?>
 	<p>No Roles.</p>
 <?php else: ?>
@@ -18,6 +6,12 @@
 			<tr>
 				<th>Role Id</th>
 				<th>Role Name</th>
+				<th>
+					<a class="btn btn-primary pull-right" href="<?=  action("{$namespace}\RoleController@create") ?>">
+						<i class="fa fa-plus"></i>
+						New Role
+					</a>
+				</th>
 			</tr>
 		</thead>
 

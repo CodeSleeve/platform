@@ -49,7 +49,7 @@
 	<div class="actions">
 		<?= Form::submit('Save', ['class' => 'btn btn-primary']) ?>
 
-		or <a href="<?= $cancel ?>">Cancel</a>
+		<span style="padding: 0px 10px;">or</span> <a href="<?= $cancel ?>">Cancel</a>
 	</div>
 
 <?= Form::close(); ?>

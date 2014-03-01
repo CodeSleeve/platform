@@ -8,10 +8,10 @@
 		<?= show_message_when('name', $errors) ?>
 	</div>
 
-	<div class="actions">
+	<div class="actions text-center push-down-more">
 		<?= Form::submit('Save', ['class' => 'btn btn-primary']) ?>
 
-		or <a href="<?= $cancel ?>">Cancel</a>
+		<span style="padding: 0px 10px;">or</span> <a href="<?= $cancel ?>">Cancel</a>
 	</div>
 
 <?= Form::close(); ?>

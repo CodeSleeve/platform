@@ -26,7 +26,9 @@ class RoleController extends BaseController
 	 */
 	public function index()
 	{
-		$roles = $this->roles->paginate();
+		$roles = $this->roles
+			->orderBy(Input::query('sort_by', 'id'), Input::query('sort_direction', 'ASC'))
+			->paginate();
 
 		$this->layout->nest('content', viewpath('platform::roles.index'), compact('roles'));
 	}

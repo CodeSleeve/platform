@@ -30,7 +30,9 @@ class UserController extends BaseController
 	 */
 	public function index()
 	{
-		$users = $this->users->paginate();
+		$users = $this->users
+			->orderBy(Input::query('sort_by', 'id'), Input::query('sort_direction', 'ASC'))
+			->paginate();
 
 		$this->layout->nest('content', viewpath("platform::users.index"), compact('users'));
 	}

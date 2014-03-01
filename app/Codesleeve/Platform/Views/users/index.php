@@ -4,9 +4,9 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>Email</th>
-				<th>First Name</th>
-				<th>Last Name</th>
+				<th><?= sort_table_by('email', 'Email') ?></th>
+				<th><?= sort_table_by('first_name', 'First Name') ?></th>
+				<th><?= sort_table_by('last_name', 'Last Name') ?></th>
 				<th>
 					<a class="pull-right btn btn-primary" href="<?=  action("{$namespace}\UserController@create") ?>">
 						<i class="fa fa-plus"></i>
@@ -36,5 +36,7 @@
 		</tbody>
 	</table>
 
-	<?= $users->links() ?>
+	<div class="text-center">
+		<?= $users->links() ?>
+	</div>
 <?php endif ?>

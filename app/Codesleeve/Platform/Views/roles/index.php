@@ -4,8 +4,8 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>Role Id</th>
-				<th>Role Name</th>
+				<th><?= sort_table_by('role_id', 'Role Id') ?></th>
+				<th><?= sort_table_by('name', 'Role Name') ?></th>
 				<th>
 					<a class="btn btn-primary pull-right" href="<?=  action("{$namespace}\RoleController@create") ?>">
 						<i class="fa fa-plus"></i>

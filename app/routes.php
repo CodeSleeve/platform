@@ -19,13 +19,11 @@ Route::get('/', function()
 
 /*
 |--------------------------------------------------------------------------
-| Validation Exceptions
+| Platform Routes
 |--------------------------------------------------------------------------
-| 
-| If we encounter one of these, let's redirect to the correct place
+|
+| We keep the routes for platform in a seperate file in hopes of making this
+| routes file a little cleaner.
 |
 */
-App::error(function(\Codesleeve\Platform\Exceptions\ValidatorException $exception)
-{
-    return Redirect::to($exception->getAction())->withErrors($exception->getValidator())->withInput($exception->getInput());
-});
+require 'routes.platform.php';

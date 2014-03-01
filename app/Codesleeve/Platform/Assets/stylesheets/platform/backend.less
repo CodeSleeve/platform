@@ -1,0 +1,102 @@
+/**
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any Css/Less files within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+ * can be referenced here using a relative path.
+ *
+ * It's not advisable to add code directly here, but if you do, it'll appear in whatever order it
+ * gets included (e.g. say you have require_tree . then the code will appear after all the directories
+ * but before any files alphabetically greater than 'application.css'
+ *
+ *= require twitter/css/bootstrap
+ *= require font-awesome/css/font-awesome
+ *= require chosen/chosen
+ *= require fonts
+ *= require structure
+ *= require logo
+ *= require_self
+ *= depend_on colors.less
+ */
+
+@import "colors.less";
+
+body {
+	background-color: #fcfcfc;
+}
+
+a {
+	color: #646667;
+	font-size: 14px;
+	letter-spacing: 2px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.push-down {
+    margin-top: 20px;
+}
+
+.push-down-more {
+    margin-top: 40px;
+}
+
+.push-down-most {
+    margin-top: 60px;
+}
+
+.navbar-inverse {
+	background-color: #34383c;
+}
+
+.sidebar {
+	background-color: #646667;
+}
+
+.nav-sidebar a {
+	color: #eee;
+}
+
+.nav>li>a:hover, .nav>li>a:focus {
+	background-color: #7a7c7c;
+}
+
+.nav-sidebar > .active > a {
+	color: #eee;
+	background-color: #818487;
+}
+
+i.large-icon {
+	font-size: 18px;
+}
+
+.navbar {
+	padding-right: 10px;
+	margin-bottom: 0;
+	min-height: 40px;
+	background: #3b3b41;
+	text-shadow: 1px 1px 1px #0a0c0e;
+	border: 0;
+	color: #fff;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	border-bottom: 1px solid #343439;
+}
+
+.dashboard .package-area {
+    min-height: 400px;
+    background-color: #fcfcfc;
+    padding: 30px;
+}
+
+.nav-sidebar > .active > a {
+    color: #fff;
+    background-color: #428bca;
+}
+.sidebar i {
+    font-size: 20px;
+}
+
+.sidebar a {
+    border-bottom: 1px solid #555;
+}

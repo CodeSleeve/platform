@@ -69,6 +69,21 @@ App::down(function()
 
 /*
 |--------------------------------------------------------------------------
+| Handle ValidationExceptions
+|--------------------------------------------------------------------------
+|
+| If we encounter one of these, let's redirect for the user. We use this
+| throughout the application to help keep validation logic out of our
+| controllers.
+|
+*/
+App::error(function(Codesleeve\Platform\Exceptions\ValidatorException $exception)
+{
+    return Redirect::to($exception->getAction())->withErrors($exception->getValidator())->withInput($exception->getInput());
+});
+
+/*
+|--------------------------------------------------------------------------
 | Require The Filters File
 |--------------------------------------------------------------------------
 |

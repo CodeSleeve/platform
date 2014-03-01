@@ -11,7 +11,7 @@ module.exports = function(grunt) {
           'app/controllers/**',
           'app/models/**',
           'app/views/**',
-          'workbench/codesleeve/platform/src/**'
+          'app/Codesleeve/Platform/**'
         ],
         options: {
           livereload: true

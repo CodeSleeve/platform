@@ -13,10 +13,11 @@
  .sidebar {
     display: none;
     position: fixed;
-    top: 51px;
+    top: 50px;
     bottom: 0;
     left: 0;
     max-width: 90px;
+    padding-top: 20px;
     z-index: 1000;
     overflow-x: hidden;
     overflow-y: auto;

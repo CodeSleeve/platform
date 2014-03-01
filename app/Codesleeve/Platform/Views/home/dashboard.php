@@ -1,13 +1,15 @@
 
 <div class="row text-center">
-	<div class="col-xs-4">
+	<div class="col-lg-6 col-md-4">
 		<div class="package-area">
-			<h1>Users</h1>
+			<h1>User Area</h1>
+			<p>Have something to do with users here.</p>
 		</div>
 	</div>
-	<div class="col-xs-4">
+	<div class="col-lg-6 col-md-4">
 		<div class="package-area">
-			<h1>Roles</h1>
+			<h1>Role Area</h1>
+			<p>Have something to do with roles here... maybe latest roles added?</p>
 		</div>
 	</div>
 </div>

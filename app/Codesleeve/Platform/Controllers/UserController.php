@@ -46,7 +46,7 @@ class UserController extends BaseController
 
 		$user->available_roles = $this->roles->lists('name', 'id');
 
-		$user->selected_roles = $user->roles()->select('platform_roles.id AS id')->lists('id');
+		$user->selected_roles = $user->roles()->select('roles.id AS id')->lists('id');
 
 		$this->layout->nest('content', viewpath("platform::users.create"), compact('user'));
 	}
@@ -85,7 +85,7 @@ class UserController extends BaseController
 
 		$user->available_roles = $this->roles->lists('name', 'id');
 
-		$user->selected_roles = $user->roles()->select('platform_roles.id AS id')->lists('id');
+		$user->selected_roles = $user->roles()->select('roles.id AS id')->lists('id');
 
 		$this->layout->nest('content', viewpath("platform::users.edit"), compact('user'));
 	}

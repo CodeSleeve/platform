@@ -14,22 +14,39 @@
  *= require chosen/chosen
  *= require fonts
  *= require structure
+ *= require dashboard
  *= require logo
  *= require_self
  *= depend_on colors.less
+ *= depend_on navigation.less
+ *= depend_on buttons.less
+ *= depend_on alerts.less
  */
 
 @import "colors.less";
+@import "navigation.less";
+@import "buttons.less";
+@import "alerts.less";
 
 body {
-	background-color: #fcfcfc;
+	background-color: @body-background;
 }
 
 a {
-	color: #646667;
+	color: @link-color;
 	font-size: 14px;
 	letter-spacing: 2px;
 	font-family: 'Open Sans', sans-serif;
+}
+
+a:hover {
+	text-decoration: none;
+	color: @link-hover-color;
+}
+
+.breadcrumb {
+	background-color: @breadcrumb-background;
+	border-bottom: 1px solid #eee;
 }
 
 .push-down {
@@ -44,59 +61,7 @@ a {
     margin-top: 60px;
 }
 
-.navbar-inverse {
-	background-color: #34383c;
-}
-
-.sidebar {
-	background-color: #646667;
-}
-
-.nav-sidebar a {
-	color: #eee;
-}
-
-.nav>li>a:hover, .nav>li>a:focus {
-	background-color: #7a7c7c;
-}
-
-.nav-sidebar > .active > a {
-	color: #eee;
-	background-color: #818487;
-}
-
 i.large-icon {
 	font-size: 18px;
-}
 
-.navbar {
-	padding-right: 10px;
-	margin-bottom: 0;
-	min-height: 40px;
-	background: #3b3b41;
-	text-shadow: 1px 1px 1px #0a0c0e;
-	border: 0;
-	color: #fff;
-	-webkit-border-radius: 0;
-	-moz-border-radius: 0;
-	border-radius: 0;
-	border-bottom: 1px solid #343439;
-}
-
-.dashboard .package-area {
-    min-height: 400px;
-    background-color: #fcfcfc;
-    padding: 30px;
-}
-
-.nav-sidebar > .active > a {
-    color: #fff;
-    background-color: #428bca;
-}
-.sidebar i {
-    font-size: 20px;
-}
-
-.sidebar a {
-    border-bottom: 1px solid #555;
 }

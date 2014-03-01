@@ -38,7 +38,9 @@
 
                 <?= $content ?>
 
-                <?= render("platform::layouts.partials.footer") ?>
+                <div style="margin-top: 100px;">
+                    <?= render("platform::layouts.partials.footer") ?>
+                </div>
             </div>
         </div>
     </div>

@@ -33,4 +33,8 @@
 			<?php endforeach ?>
 		</tbody>
 	</table>
+
+	<div class="text-center">
+		<?= $roles->links() ?>	
+	</div>
 <?php endif ?>

@@ -100,5 +100,6 @@ class PlatformServiceProvider extends ServiceProvider
 		require $base . "/Macros/render.php";
 		require $base . "/Macros/show_message_when.php";
 		require $base . "/Macros/viewpath.php";
+		require $base . "/Macros/sort_table_by.php";
 	}
 }

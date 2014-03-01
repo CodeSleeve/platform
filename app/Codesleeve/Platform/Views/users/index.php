@@ -35,4 +35,6 @@
 			<?php endforeach ?>
 		</tbody>
 	</table>
+
+	<?= $users->links() ?>
 <?php endif ?>

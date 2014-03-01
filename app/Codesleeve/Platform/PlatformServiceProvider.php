@@ -1,6 +1,6 @@
 <?php namespace Codesleeve\Platform;
 
-use ClassLoader, View;
+use ClassLoader, Config, View;
 use Illuminate\Support\ServiceProvider;
 
 class PlatformServiceProvider extends ServiceProvider
@@ -33,6 +33,11 @@ class PlatformServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
+		$this->app['platform.navigation'] = $this->app->share(function($app)
+		{
+			return new Navigation\Navigator(Config::get('platform.navigation', array()));
+		});
+
 		$this->app['platform.setup'] = $this->app->share(function($app)
         {
             return new Commands\PlatformSetupCommand;

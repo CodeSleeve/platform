@@ -1,6 +1,7 @@
 <?php namespace Codesleeve\Platform\Controllers;
 
-use Auth, Controller, Route, User, View;
+use App, Auth, Controller, Route, User, View;
+use Codesleeve\Platform\Navigation\Facade as Navigation;
 use Codesleeve\Platform\Navigation\Breadcrumbs;
 
 class BaseController extends Controller
@@ -38,6 +39,7 @@ class BaseController extends Controller
 	{
 		$this->currentUser = Auth::user();
 		$this->breadcrumbs = Breadcrumbs::fromUrl();
+		$this->navigation = Navigation::all();
 	}
 
 	/**
@@ -49,6 +51,7 @@ class BaseController extends Controller
 	{
 		$this->layout = render($this->layout);
 
+		View::share('navigation', $this->navigation);
 		View::share('namespace', $this->namespace);
 		View::share('breadcrumbs', $this->breadcrumbs);
 		View::share('currentUser', $this->currentUser);

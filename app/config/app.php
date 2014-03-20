@@ -107,6 +107,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
+		"Codesleeve\Platform\CoreServiceProvider",
+		"Codesleeve\Platform\Publish\ServiceProvider",
 	),
 
 	/*

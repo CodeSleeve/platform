@@ -4,7 +4,9 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
-		"laravel/framework": "4.1.*"
+		"laravel/framework": "4.1.*",
+		"codesleeve/platform-core": "dev-master",
+		"codesleeve/platform-publish": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
@@ -32,5 +34,5 @@
 	"config": {
 		"preferred-install": "dist"
 	},
-	"minimum-stability": "stable"
+	"minimum-stability": "dev"
 }

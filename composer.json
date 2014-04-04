@@ -8,6 +8,9 @@
 		"codesleeve/platform-core": "dev-master",
 		"codesleeve/platform-publish": "dev-master"
 	},
+	"require-dev": {
+		"phpspec/phpspec": "2.0.*@dev"
+	},
 	"autoload": {
 		"classmap": [
 			"app/commands",
@@ -28,15 +31,15 @@
 			"php artisan optimize"
 		],
 		"post-create-project-cmd": [
-			"php artisan key:generate",
-    		"php artisan migrate --package codesleeve/platform-core",
-    		"php artisan db:seed --class \"Codesleeve\\Platform\\Seeds\\Platform\"",
-    		"php artisan platform:setup",
+			"php artisan key:generate"
+			"php artisan migrate --package codesleeve/platform-core",
+			"php artisan db:seed --class \"Codesleeve\\Platform\\Seeds\\Platform\"",
+			"php artisan platform:setup",
 			"php artisan migrate --package codesleeve/platform-publish"
 		]
 	},
 	"config": {
 		"preferred-install": "dist"
 	},
-	"minimum-stability": "dev"
+	"minimum-stability": "stable"
 }

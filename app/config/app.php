@@ -65,7 +65,7 @@ return array(
 	|
 	*/
 
-	'key' => 'nb8pxxDxjCUBri0dgooQx1AShp8vlFoT',
+	'key' => 'ChangeMePlz!',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -107,8 +107,9 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
-		"Codesleeve\Platform\CoreServiceProvider",
-		"Codesleeve\Platform\Publish\ServiceProvider",
+		'Codesleeve\Platform\CoreServiceProvider',
+ 		'Codesleeve\Platform\Publish\ServiceProvider',
+
 	),
 
 	/*

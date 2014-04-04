@@ -1,7 +1,7 @@
 {
-	"name": "laravel/laravel",
-	"description": "The Laravel Framework.",
-	"keywords": ["framework", "laravel"],
+	"name": "codesleeve/platform",
+	"description": "The Codesleeve Platform Starter Kit",
+	"keywords": ["framework", "codesleeve", "platform", "laravel"],
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.1.*",

@@ -32,10 +32,7 @@
 		],
 		"post-create-project-cmd": [
 			"php artisan key:generate",
-			"php artisan migrate --package codesleeve/platform-core",
-			"php artisan db:seed --class \"Codesleeve\\Platform\\Seeds\\Platform\"",
-			"php artisan platform:setup --yes",
-			"php artisan migrate --package codesleeve/platform-publish"
+			"php artisan platform:setup --yes"
 		]
 	},
 	"config": {
